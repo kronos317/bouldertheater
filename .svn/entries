@@ -60,6 +60,20 @@ ragedigi
 
 367
 
+web_forward_button.png
+file
+0
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
 BoulderThtr-Info.plist
 file
 
@@ -128,6 +142,65 @@ ragedigi
 
 3172
 
+web_output_button@2x.png
+file
+0
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+web_back_button@2x.png
+file
+0
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+web_forward_button@2x.png
+file
+0
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+libFlurry.a
+file
+0
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+Classes
+dir
+
 MainWindow.xib
 file
 
@@ -162,42 +235,8 @@ ragedigi
 
 59014
 
-Classes
+FlurryLibWithLocation
 dir
-
-SetsCell.xib
-file
-
-
-
-
-2011-01-04T22:11:39.000000Z
-23c52586194fcc265d900bd869f0ae21
-2010-12-28T17:08:59.790784Z
-1683
-ragedigi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-21316
 
 BoulderTheater_Prefix.pch
 file
@@ -233,8 +272,39 @@ ragedigi
 
 197
 
-FlurryLibWithLocation
-dir
+SetsCell.xib
+file
+
+
+
+
+2011-01-04T22:11:39.000000Z
+23c52586194fcc265d900bd869f0ae21
+2010-12-28T17:08:59.790784Z
+1683
+ragedigi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+21316
 
 alertPhotoButton.png
 file
@@ -411,4 +481,32 @@ has-props
 
 
 3588
+
+web_back_button.png
+file
+0
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+web_output_button.png
+file
+0
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
 

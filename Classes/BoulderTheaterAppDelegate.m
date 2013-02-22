@@ -9,7 +9,7 @@
 #import "BoulderTheaterAppDelegate.h"
 #import "ASIFormDataRequest.h"
 #import "JSON.h"
-#import "FlurryAPI.h"
+#import "Flurry.h"
 #import	"VenueConnect.h"
 
 @implementation BoulderTheaterAppDelegate
@@ -28,7 +28,7 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
-	[FlurryAPI startSessionWithLocationServices:[[VenueConnect sharedVenueConnect] flurryAPIKey]];
+	[Flurry startSession:[[VenueConnect sharedVenueConnect] flurryAPIKey]];
 	
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 	
@@ -633,10 +633,6 @@
 	finishedInitLoad = [NSNumber numberWithInt:1];
 			 
 	[pool release];
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    [FlurryAPI setSessionReportsOnCloseEnabled:true];
 }
 
 - (void)dealloc {
