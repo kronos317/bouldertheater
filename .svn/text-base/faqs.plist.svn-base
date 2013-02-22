@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>question</key>
+		<string>What does “limited seating” mean?</string>
+		<key>answer</key>
+		<string>For every show there are 217 seats in the balcony. Those are available on a first come first serve basis unless it is a fully reserved show. The only time seats are guaranteed for every ticket holder is when the show is advertised as either a fully reserved or GA seated show. We add seating and tables for as many shows as we can. We do our best to make it as comfortable as we can. If a show is sold out and is general admission “limited seating” we will have no seating in the main room.</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>What is this “seat” number on my ticket?</string>
+		<key>answer</key>
+		<string>That number is just a ticket accounting number and does not denote a “seat”. If the show is a reserved seated event, the ticket will have a section, row and seat number.</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>Why is there a service charge? And what is the tax?</string>
+		<key>answer</key>
+		<string>To cover the costs of ticketing software lease, ticket stock, credit card fees, telephone fees, computer hardware upgrades, box office salaries and other box office operating expenses. The admission tax is a City of Boulder tax (5% of ticket).</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>What does the &quot;invite friends&quot; button do for me?</string>
+		<key>answer</key>
+		<string>The &quot;invite friends&quot; button allows you and your friends to coordinate more easily. By simply clicking the green button you can invite and share the details of an event with your friends to organize and track RSVPs. All of your friends can see who is going, if they have purchased tickets, and more. You can also use it to designate a group buyer if you wish. Best of all it&apos;s free so give it a try and never go to a show alone again.</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>Where can I park?</string>
+		<key>answer</key>
+		<string>There are several City of Boulder parking garages and lots nearby. There is also three hour parking on surrounding residential streets.</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>What time do the doors open and the show really start?</string>
+		<key>answer</key>
+		<string>Generally, doors open one hour prior to show time or for movies a half hour before the start of the film. We try to start all shows on time but not having full control over the artists can sometimes cause the show to start later than planned. We do our best to keep things on time as we know people make plans around the starting and ending times of events.</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>How can I get my band to play the Boulder Theater?</string>
+		<key>answer</key>
+		<string>For consideration send a cd and promotional material to:
+  Talent Buyer
+  Boulder Theater
+  2032 14th Street
+  Boulder, CO 80302</string>
+	</dict>
+</array>
+</plist>
