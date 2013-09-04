@@ -101,6 +101,7 @@
 	blackBG.opaque = YES;
 	blackBG.alpha = 0.0;
 
+	/*
 	signUpView = [[UIView alloc] initWithFrame:CGRectMake(10,260,300,180)];
 	signUpView.alpha = 0.0;
 	
@@ -156,15 +157,16 @@
 	
 	[window addSubview:signUpView];
 	[signUpView release];
+	*/
 	
 	[textFieldBar removeFromSuperview];
 	[window addSubview:textFieldBar];
 	
-	if([[defaults objectForKey:@"signedup"] isEqualToString:@"1"]) {
+//	if([[defaults objectForKey:@"signedup"] isEqualToString:@"1"]) {
 		[self hideSplashView];
-	} else {
-		[self showSignUpForm];
-	}
+//	} else {
+//		[self showSignUpForm];
+//	}
 }
 
 - (void)toggleAdvert {

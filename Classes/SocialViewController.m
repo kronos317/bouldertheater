@@ -32,6 +32,7 @@
 - (void)showExternalWebView:(NSString*)url {
 	ExternalWebViewController *webViewVC = [[ExternalWebViewController alloc] init];
 	[webViewVC setRootURL:url];
+	[webViewVC release];
 }
 
 

@@ -327,10 +327,14 @@
 		
 		if(testTextView.contentSize.height == [oneRowHeight floatValue])	// Only one row displayed - see if there is an opening act 
 		{
-			if([[[shows objectAtIndex:indexPath.row] objectForKey:@"opener"] length]) {
+			
+			if(([[shows objectAtIndex:indexPath.row] objectForKey:@"opener"] != [NSNull null])&&([[[shows objectAtIndex:indexPath.row] objectForKey:@"opener"] length])) { //Fixed to prevent crashing by Nic
+				
 				[cell.show setText: [NSString stringWithFormat: @"%@\n%@", [[shows objectAtIndex:indexPath.row] objectForKey:@"title"], [[shows objectAtIndex:indexPath.row] objectForKey:@"opener"]]];
 			}
-			else if([[[shows objectAtIndex:indexPath.row] objectForKey:@"presentedBy"] length]) {		// No opening act - if there is a presented by then display it
+			else if(([[shows objectAtIndex:indexPath.row] objectForKey:@"presentedBy"] != [NSNull null])&&[[[shows objectAtIndex:indexPath.row] objectForKey:@"presentedBy"] length]) {		// No opening act - if there is a presented by then display it
+				
+			
 				[cell.show setText: [NSString stringWithFormat: @"%@\n%@", [[shows objectAtIndex:indexPath.row] objectForKey:@"presentedBy"], [[shows objectAtIndex:indexPath.row] objectForKey:@"title"]]];
 			}
 			else {
