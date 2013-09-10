@@ -15,6 +15,7 @@
 
 
 - (void)viewDidLoad {
+	//NSLog(@"Load1"); //Nic
     [super viewDidLoad];
 	defaults = [NSUserDefaults standardUserDefaults];
 	appDelegate = (BoulderTheaterAppDelegate *)[[UIApplication sharedApplication] delegate];

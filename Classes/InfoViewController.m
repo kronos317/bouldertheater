@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	//NSLog(@"Load2");//Nic
 	if(![[[UIDevice currentDevice] model] hasPrefix:@"iPhone"]) {
 		boxCallButton.userInteractionEnabled = NO;
 		//[boxCallButton setBackgroundImage:nil forState:UIControlStateNormal];

@@ -452,6 +452,7 @@
 	
 	currentShow = indexPath.row;
 	
+	//NSLog(@"Beggining");
 	NSDictionary *d;
 	if([showsTable superview]) {
 		d = [shows objectAtIndex:indexPath.row];
@@ -485,18 +486,20 @@
 	detailOpener.text = [d objectForKey:@"opener"];
 	detailOpener.textColor = textColor;
 	
-	if([[d objectForKey:@"doorTime"] length]) {
+	if([[d objectForKey:@"doorTime"] length])
+	{
 		detailDoorsTime.text = [[d objectForKey:@"doorTime"] uppercaseString];
 		detailDoorsTime.hidden = NO;
 		detailDoorsLabel.hidden = NO;	
 		detailDoorsTime.textColor = textColor;		
 	}
-	else {
+	else
+	{
 		detailDoorsTime.hidden = YES;
 		detailDoorsLabel.hidden = YES;
 	}
 		
-
+	//NSLog(@"Half"); // Nic Debug
 	detailShowTime.text = [d objectForKey:@"showTime"];
 	detailShowTime.textColor = textColor;
 	
@@ -528,7 +531,8 @@
 
 	int y = 267;
 	int c = 0;
-	for(NSDictionary *dict in [d objectForKey:@"mp3s"]) {
+	for(NSDictionary *dict in [d objectForKey:@"mp3s"])
+	{
 		UIView *songView = [[UIView alloc] initWithFrame:CGRectMake(11,y,297,50)];
 		songView.tag = -1;
 		
@@ -604,6 +608,8 @@
 	tablesHolder.frame = CGRectMake(-320,48,320,391);
 	detailView.frame = CGRectMake(0,48,320,391);
 	[UIView commitAnimations];
+	
+	//NSLog(@"Full");
 }
 
 
@@ -867,25 +873,29 @@
 
 - (void)downloadImage:(NSString *)image {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
+	NSLog(@"Beggining of DownloadImage");
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
 	
 	NSArray *pieces = [image componentsSeparatedByString:@"/"];
 	NSString *clubImage = [NSString stringWithFormat:@"/%@",[pieces lastObject]];
 	
+	NSLog(@"3");
 	if(![[NSFileManager defaultManager] fileExistsAtPath:[documentsDirectory stringByAppendingString:clubImage]]) {
 		NSURL *myURL = [NSURL URLWithString:image];
-		NSData *data = [NSData dataWithContentsOfURL:myURL];
+		
+		NSData *data = [NSData dataWithContentsOfURL:myURL]; //This line is crashing
+			
 		if(!data) {
 			clubImage = nil;
 		} else {
 			[data writeToFile:[documentsDirectory stringByAppendingString:clubImage] atomically:YES];
 		}
 	}
-	
+	NSLog(@"4");
 	[self performSelectorOnMainThread:@selector(changeDetailImage:) withObject:clubImage waitUntilDone:NO];
 	
+	NSLog(@"End of DownloadImage");
 	[pool release];
 }
 
