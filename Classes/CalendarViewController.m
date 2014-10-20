@@ -45,16 +45,24 @@
     NSString *returnString = [defaults objectForKey:@"shows"];
     NSError *error;
     SBJSON *jsonParser = [[SBJSON alloc] init];
-    NSArray *tempShows = [[jsonParser objectWithString:returnString error:&error] objectForKey:@"showDates"];
-
+    NSArray *tempShows;
     shows = nil;
-    if([tempShows count] > 0) {
-        shows = [[NSArray arrayWithArray:tempShows] retain];
-        for (NSDictionary *d in shows){
-            if ([[d objectForKey:@"opener"] isKindOfClass:[NSNull class]]){
-                [d setValue:@"" forKey:@"opener"];
+    
+    @try{
+        tempShows = [[jsonParser objectWithString:returnString error:&error] objectForKey:@"showDates"];
+        
+        shows = nil;
+        if([tempShows count] > 0) {
+            shows = [[NSArray arrayWithArray:tempShows] retain];
+            for (NSDictionary *d in shows){
+                if ([[d objectForKey:@"opener"] isKindOfClass:[NSNull class]]){
+                    [d setValue:@"" forKey:@"opener"];
+                }
             }
         }
+    }
+    @catch(NSException *exception){
+        
     }
     
 	favorites = [[NSMutableArray arrayWithArray:[defaults objectForKey:@"favorites"]] retain];
@@ -65,7 +73,8 @@
 		[dateFormatter setDateStyle:NSDateFormatterShortStyle];
 		[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
 		NSDate *date = [dateFormatter dateFromString:[d objectForKey:@"showDate"]];
-		date = [date addTimeInterval:86400];
+        date = [date dateByAddingTimeInterval:86400];
+		// date = [date addTimeInterval:86400];
 		[dateFormatter release];
 		
 		NSDate *today = [NSDate date];

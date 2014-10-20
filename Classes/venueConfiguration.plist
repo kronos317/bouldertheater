@@ -54,5 +54,7 @@
 	<string>http://www.ragedigitalinc.com/apps/Cowbell/wall_photos/uploading.jpg</string>
 	<key>appStoreURL</key>
 	<string>http://itunes.com/apps/boulderthtr</string>
+	<key>crittercismAppId</key>
+	<string>544516fd1787845621000001</string>
 </dict>
 </plist>

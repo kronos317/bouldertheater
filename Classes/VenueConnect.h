@@ -37,6 +37,8 @@
 
 - (NSString *) flurryAPIKey;							// The Key provided by Flurry for this particular app.  Each venueConnect app should have a unique key
 
+- (NSString *) crittercismAppId;
+
 - (NSString *) pushNotificationApplicationKey;			// This is the UrbanAirship key and secret
 - (NSString *) pushNotificationApplicationSecret;		//
 

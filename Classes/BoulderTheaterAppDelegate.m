@@ -11,6 +11,7 @@
 #import "JSON.h"
 #import "Flurry.h"
 #import	"VenueConnect.h"
+#import "Crittercism.h"
 
 @implementation BoulderTheaterAppDelegate
 
@@ -29,6 +30,8 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
 	[Flurry startSession:[[VenueConnect sharedVenueConnect] flurryAPIKey]];
+    NSString *szCrittercismAppId = [[VenueConnect sharedVenueConnect] crittercismAppId];
+    [Crittercism enableWithAppID:szCrittercismAppId];
 	
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 	[[UIApplication sharedApplication] setStatusBarHidden:YES];

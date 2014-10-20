@@ -187,6 +187,8 @@
 		99E27EE91132FD45008BD7A5 /* cellAccessory_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E27EE81132FD45008BD7A5 /* cellAccessory_off.png */; };
 		99E2802D1132FEA6008BD7A5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E2802C1132FEA6008BD7A5 /* Security.framework */; };
 		99E2802F1132FEA6008BD7A5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E2802E1132FEA6008BD7A5 /* libxml2.dylib */; };
+		FF013C5E19F54CF9001C6918 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF013C5C19F54CF9001C6918 /* dsym_upload.sh */; };
+		FF013C5F19F54CF9001C6918 /* libCrittercism_v5_0_4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF013C5D19F54CF9001C6918 /* libCrittercism_v5_0_4.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -418,6 +420,11 @@
 		99E27EE81132FD45008BD7A5 /* cellAccessory_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cellAccessory_off.png; path = Images/cellAccessory_off.png; sourceTree = "<group>"; };
 		99E2802C1132FEA6008BD7A5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		99E2802E1132FEA6008BD7A5 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		FF013C5919F54CF9001C6918 /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
+		FF013C5A19F54CF9001C6918 /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
+		FF013C5B19F54CF9001C6918 /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
+		FF013C5C19F54CF9001C6918 /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
+		FF013C5D19F54CF9001C6918 /* libCrittercism_v5_0_4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v5_0_4.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64A50FEA14E0639E00AA559C /* libz.dylib in Frameworks */,
+				FF013C5F19F54CF9001C6918 /* libCrittercism_v5_0_4.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -448,6 +456,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FF013C5819F54CF9001C6918 /* CrittercismSDK */,
 				64FEDCB516D6FDEA00ECBA06 /* AFNetworking */,
 				64FEDCCB16D6FDEA00ECBA06 /* ExternalWebViewController.h */,
 				64FEDCCC16D6FDEA00ECBA06 /* ExternalWebViewController.m */,
@@ -768,6 +777,18 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		FF013C5819F54CF9001C6918 /* CrittercismSDK */ = {
+			isa = PBXGroup;
+			children = (
+				FF013C5919F54CF9001C6918 /* CRFilter.h */,
+				FF013C5A19F54CF9001C6918 /* Crittercism.h */,
+				FF013C5B19F54CF9001C6918 /* CrittercismDelegate.h */,
+				FF013C5C19F54CF9001C6918 /* dsym_upload.sh */,
+				FF013C5D19F54CF9001C6918 /* libCrittercism_v5_0_4.a */,
+			);
+			path = CrittercismSDK;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -887,6 +908,7 @@
 				85E8AFF011877B9C0048FE8E /* songPauseBG.png in Resources */,
 				85E8AFF211877BB40048FE8E /* songPlayBG.png in Resources */,
 				85E8AFF411877BFA0048FE8E /* toggleLeft_on.png in Resources */,
+				FF013C5E19F54CF9001C6918 /* dsym_upload.sh in Resources */,
 				85E8AFF611877C140048FE8E /* toggleLeft.png in Resources */,
 				85E8AFF811877C330048FE8E /* toggleRight_on.png in Resources */,
 				85E8AFFA11877C4E0048FE8E /* toggleRight.png in Resources */,
@@ -1025,13 +1047,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"\"$(SRCROOT)/FlurryLibWithLocation\"",
+					"$(PROJECT_DIR)/Classes/CrittercismSDK",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				PROVISIONING_PROFILE = "d00d5994-3b12-433f-819f-e8c56b339428";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "d00d5994-3b12-433f-819f-e8c56b339428";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "Classes/**";
@@ -1053,13 +1076,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"\"$(SRCROOT)/FlurryLibWithLocation\"",
+					"$(PROJECT_DIR)/Classes/CrittercismSDK",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				PROVISIONING_PROFILE = "d00d5994-3b12-433f-819f-e8c56b339428";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "d00d5994-3b12-433f-819f-e8c56b339428";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "Classes/**";
@@ -1077,8 +1101,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				PROVISIONING_PROFILE = "d00d5994-3b12-433f-819f-e8c56b339428";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "d00d5994-3b12-433f-819f-e8c56b339428";
 				SDKROOT = iphoneos;
 			};
 			name = Distribution;
@@ -1098,13 +1122,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"\"$(SRCROOT)/FlurryLibWithLocation\"",
+					"$(PROJECT_DIR)/Classes/CrittercismSDK",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				PROVISIONING_PROFILE = "d00d5994-3b12-433f-819f-e8c56b339428";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "d00d5994-3b12-433f-819f-e8c56b339428";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "Classes/**";
@@ -1122,8 +1147,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				PROVISIONING_PROFILE = "d00d5994-3b12-433f-819f-e8c56b339428";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "d00d5994-3b12-433f-819f-e8c56b339428";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1139,8 +1164,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				PROVISIONING_PROFILE = "d00d5994-3b12-433f-819f-e8c56b339428";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "d00d5994-3b12-433f-819f-e8c56b339428";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

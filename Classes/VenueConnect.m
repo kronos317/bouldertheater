@@ -148,10 +148,12 @@ static VenueConnect *sharedVenueConnect = nil;
 
 
 - (NSString *) flurryAPIKey{
-	return [configuration objectForKey:@"flurrAPIKey"];
+	return [configuration objectForKey:@"flurryAPIKey"];
 }
 
-
+- (NSString *) crittercismAppId{
+    return [configuration objectForKey:@"crittercismAppId"];
+}
 
 
 - (NSString *) pushNotificationApplicationKey{
