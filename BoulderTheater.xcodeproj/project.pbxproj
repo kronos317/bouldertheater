@@ -1013,8 +1013,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Lin (2Y98ET3L55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chris Lin (2Y98ET3L55)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1030,8 +1030,8 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "Classes/**";
@@ -1043,8 +1043,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Lin (2Y98ET3L55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chris Lin (2Y98ET3L55)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BoulderTheater_Prefix.pch;
@@ -1058,8 +1058,8 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "Classes/**";
@@ -1070,15 +1070,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Lin (2Y98ET3L55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chris Lin (2Y98ET3L55)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
 				SDKROOT = iphoneos;
 			};
 			name = Distribution;
@@ -1088,8 +1088,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Lin (2Y98ET3L55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chris Lin (2Y98ET3L55)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BoulderTheater_Prefix.pch;
@@ -1103,8 +1103,8 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "Classes/**";
@@ -1115,15 +1115,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Lin (2Y98ET3L55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chris Lin (2Y98ET3L55)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1132,15 +1132,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Lin (2Y98ET3L55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chris Lin (2Y98ET3L55)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				PROVISIONING_PROFILE = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cf58cb6f-c479-479b-b5a5-ffb302d9d097";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
