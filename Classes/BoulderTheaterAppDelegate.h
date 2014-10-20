@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JSON.h"
 #import "VenueConnect.h"
+#import "Global.h"
 
 @interface BoulderTheaterAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UITextFieldDelegate> {
 	

@@ -40,6 +40,7 @@
 		3849D86C10A541E900AD9788 /* buttonPause.png in Resources */ = {isa = PBXBuildFile; fileRef = 3849D86810A541E900AD9788 /* buttonPause.png */; };
 		3849D86D10A541E900AD9788 /* buttonPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 3849D86910A541E900AD9788 /* buttonPlay.png */; };
 		3849D86E10A541E900AD9788 /* songBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 3849D86A10A541E900AD9788 /* songBG.png */; };
+		3C043B6919F1D4AE004343CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C043B6819F1D4AE004343CB /* Default-568h@2x.png */; };
 		645418EE16E66EAF0061F2F2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 645418EC16E66EAE0061F2F2 /* Default@2x.png */; };
 		6454191F16E66EF30061F2F2 /* alertBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 645418F016E66EF30061F2F2 /* alertBG@2x.png */; };
 		6454192116E66EF30061F2F2 /* alertTextFieldBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 645418F216E66EF30061F2F2 /* alertTextFieldBG@2x.png */; };
@@ -230,6 +231,8 @@
 		3849D86810A541E900AD9788 /* buttonPause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonPause.png; path = Images/buttonPause.png; sourceTree = "<group>"; };
 		3849D86910A541E900AD9788 /* buttonPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonPlay.png; path = Images/buttonPlay.png; sourceTree = "<group>"; };
 		3849D86A10A541E900AD9788 /* songBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = songBG.png; path = Images/songBG.png; sourceTree = "<group>"; };
+		3C043B6819F1D4AE004343CB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3C043B6A19F1D79D004343CB /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		645418EC16E66EAE0061F2F2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		645418F016E66EF30061F2F2 /* alertBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alertBG@2x.png"; path = "Images/alertBG@2x.png"; sourceTree = "<group>"; };
 		645418F216E66EF30061F2F2 /* alertTextFieldBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alertTextFieldBG@2x.png"; path = "Images/alertTextFieldBG@2x.png"; sourceTree = "<group>"; };
@@ -482,6 +485,7 @@
 				85E8BE691198D23A0048FE8E /* UIImage+RoundedCorner.m */,
 				853E197611849B28007AC0BB /* VenueConnect.h */,
 				853E197711849B28007AC0BB /* VenueConnect.m */,
+				3C043B6A19F1D79D004343CB /* Global.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -501,6 +505,7 @@
 				64E2006416E67442002220FC /* Icon.png */,
 				851FF3E712CA5A3800BD4C63 /* FlurryLibWithLocation */,
 				645418EC16E66EAE0061F2F2 /* Default@2x.png */,
+				3C043B6819F1D4AE004343CB /* Default-568h@2x.png */,
 				9982473D10A23FC90003BD01 /* Default.png */,
 				9982473510A23F370003BD01 /* Images */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -791,6 +796,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Rage Digital Inc.";
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = 84RX4A4537;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BoulderTheater" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -863,6 +873,7 @@
 				99E27EE31132FB85008BD7A5 /* twitterLoginButtonSignIn.png in Resources */,
 				99E27EE61132FBA8008BD7A5 /* textFieldBG.png in Resources */,
 				99E27EE71132FBA8008BD7A5 /* textFieldBGbig.png in Resources */,
+				3C043B6919F1D4AE004343CB /* Default-568h@2x.png in Resources */,
 				99E27EE91132FD45008BD7A5 /* cellAccessory_off.png in Resources */,
 				99253A871135CF8B00E2E722 /* buttonHeaderSmall.png in Resources */,
 				853E144F1180FA67007AC0BB /* SocialViewController.xib in Resources */,
@@ -1002,7 +1013,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1010,21 +1022,18 @@
 				GCC_PREFIX_HEADER = BoulderTheater_Prefix.pch;
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "BoulderThtr-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/FlurryLibWithLocation\"",
 				);
-				OTHER_LDFLAGS = (
-					"-weak_library",
-					/usr/lib/libSystem.B.dylib,
-					"-weak_framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = BoulderThtr;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "Classes/**";
 			};
 			name = Debug;
@@ -1034,29 +1043,25 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rage Digital Inc.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rage Digital Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BoulderTheater_Prefix.pch;
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "BoulderThtr-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/FlurryLibWithLocation\"",
 				);
-				OTHER_LDFLAGS = (
-					"-weak_library",
-					/usr/lib/libSystem.B.dylib,
-					"-weak_framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "5DDBBF43-3209-4E65-9DC3-D68A93AE03BB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5DDBBF43-3209-4E65-9DC3-D68A93AE03BB";
+				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "Classes/**";
 			};
 			name = Release;
@@ -1065,15 +1070,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rage Digital Inc.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rage Digital Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "8F7ED9F0-1170-46AA-A648-F6E964771A84";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8F7ED9F0-1170-46AA-A648-F6E964771A84";
+				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
 				SDKROOT = iphoneos;
 			};
 			name = Distribution;
@@ -1083,29 +1088,25 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rage Digital Inc.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rage Digital Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BoulderTheater_Prefix.pch;
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "BoulderThtr-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/FlurryLibWithLocation\"",
 				);
-				OTHER_LDFLAGS = (
-					"-weak_library",
-					/usr/lib/libSystem.B.dylib,
-					"-weak_framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "8F7ED9F0-1170-46AA-A648-F6E964771A84";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8F7ED9F0-1170-46AA-A648-F6E964771A84";
+				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "Classes/**";
 			};
 			name = Distribution;
@@ -1114,13 +1115,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = BoulderThtr;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1129,15 +1132,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rage Digital Inc.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rage Digital Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: AoGe He (G5X48325TH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: AoGe He (G5X48325TH)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = BoulderThtr;
-				PROVISIONING_PROFILE = "5DDBBF43-3209-4E65-9DC3-D68A93AE03BB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5DDBBF43-3209-4E65-9DC3-D68A93AE03BB";
+				PROVISIONING_PROFILE = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1011FA42-D9B3-44A0-ACF3-62B994989D8C";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

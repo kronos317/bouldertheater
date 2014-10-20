@@ -20,6 +20,8 @@
 	NSString *currentView;
 	NSInteger currentShow;
 	UIView *currentSongView;
+    
+    BOOL m_isShowsTable;
 	
 	AudioStreamer *streamer;
 	

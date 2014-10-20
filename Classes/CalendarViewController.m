@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    m_isShowsTable = true;
 	
 	defaults = [NSUserDefaults standardUserDefaults];
 	appDelegate = (BoulderTheaterAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -29,11 +30,33 @@
 	currentView = @"home";
 	currentShow = -1;
 	backButton.alpha = 0.0;
-	webView.frame = CGRectMake(320,48,320,361);
-	
+    
+    // CGRect rtWebView = webView.frame;
+	// webView.frame = CGRectMake(G_WIDTH,rtWebView.origin.y,rtWebView.size.width,rtWebView.size.height);
+    webView.frame = [self moveFrameHorz:webView.frame :G_WIDTH];
+    
+    // CGRect rtDetailsView = detailView.frame;
+	// detailView.frame = CGRectMake(G_WIDTH, rtDetailsView.origin.y, rtDetailsView.size.width, rtDetailsView.size.height);
+    detailView.frame = [self moveFrameHorz:detailView.frame :G_WIDTH];
+    
 	[favoritesTable removeFromSuperview];
 	
-	shows = [[defaults objectForKey:@"shows"] retain];
+	// shows = [[defaults objectForKey:@"shows"] retain];
+    NSString *returnString = [defaults objectForKey:@"shows"];
+    NSError *error;
+    SBJSON *jsonParser = [[SBJSON alloc] init];
+    NSArray *tempShows = [[jsonParser objectWithString:returnString error:&error] objectForKey:@"showDates"];
+
+    shows = nil;
+    if([tempShows count] > 0) {
+        shows = [[NSArray arrayWithArray:tempShows] retain];
+        for (NSDictionary *d in shows){
+            if ([[d objectForKey:@"opener"] isKindOfClass:[NSNull class]]){
+                [d setValue:@"" forKey:@"opener"];
+            }
+        }
+    }
+    
 	favorites = [[NSMutableArray arrayWithArray:[defaults objectForKey:@"favorites"]] retain];
 	
 	NSMutableArray *pastShows = [NSMutableArray arrayWithCapacity:4];
@@ -73,6 +96,9 @@
 		}
 		//NSLog(@"GOSHOWS");
 		
+        NSString *szUrl = [defaults objectForKey:@"shows_feed"];
+        NSLog(@"%@",szUrl);
+        
 		NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"shows_feed"]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
 		
 		NSData *urlData;
@@ -86,14 +112,18 @@
 
 		SBJSON *jsonParser = [[SBJSON alloc] init];
 		NSArray *tempShows = [[jsonParser objectWithString:processedString error:&error] objectForKey:@"showDates"];
-		
-		NSLog(@"%@", tempShows);
-		
+
 		if([tempShows count] > 0) {
 			[shows release];
 			shows = nil;
 			shows = [[NSArray arrayWithArray:tempShows] retain];
-			[defaults setObject:shows forKey:@"shows"];
+            for (NSDictionary *d in shows){
+                if ([[d objectForKey:@"opener"] isKindOfClass:[NSNull class]]){
+                    [d setValue:@"" forKey:@"opener"];
+                }
+            }
+			// [defaults setObject:shows forKey:@"shows"];
+            [defaults setObject:processedString forKey:@"shows"];
 		}
 		
 		
@@ -125,7 +155,8 @@
 }
 
 - (IBAction)flipTables {
-	if([showsTable superview]) {
+	// if([showsTable superview]) {
+    if(m_isShowsTable == true) {
 		if([favorites count] == 0) {
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"You do not currently have any shows favorited."  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[alert setTag:0];
@@ -140,6 +171,7 @@
 			[showsTable removeFromSuperview];
 			[tablesHolder addSubview:favoritesTable];
 			[UIView commitAnimations];
+            m_isShowsTable = false;
 		}
 	} else {
 		[flipButton setTitle:@"Favorites" forState:UIControlStateNormal];
@@ -150,6 +182,7 @@
 		[favoritesTable removeFromSuperview];
 		[tablesHolder addSubview:showsTable];
 		[UIView commitAnimations];
+        m_isShowsTable = true;
 	}
 }
 
@@ -158,6 +191,8 @@
 		if(buttonIndex == 1) {
 			//ADD TO FAVORITES
 			[favorites addObject:[defaults objectForKey:@"tempFavoritesDict"]];
+            // [favorites addObject:[self getTempFavoritesDictFromDefaults]];
+            
 			[self reloadTables];
 			[self flipTables];
 			
@@ -423,7 +458,8 @@
 }
 
 - (void)accessoryAction:(id)sender {
-	if([showsTable superview]) {
+	// if([showsTable superview]) {
+    if(m_isShowsTable == true) {
 		if([favorites containsObject:[shows objectAtIndex:[sender tag]]]) {
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"This show is already in your favorites."  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[alert setTag:0];
@@ -431,7 +467,12 @@
 			[alert release];
 		} else {
 			//ADD TO FAVORITES
+            int index = [sender tag];
+            NSObject *obj = [shows objectAtIndex:index];
+            // ChrisLin Modified: 2014-10-20   ====>   Raises error "Attempt to set a non-property-list object"
 			[defaults setObject:[shows objectAtIndex:[sender tag]] forKey:@"tempFavoritesDict"];
+            // [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:obj] forKey:@"tempFavoritesDict"];
+            
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Would you like to add this show to your favorites? If you have push notifications turned on, you will be sent a reminder three days before the show."  delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add",nil];
 			[alert setTag:1];
 			[alert show];
@@ -454,7 +495,8 @@
 	
 	//NSLog(@"Beggining");
 	NSDictionary *d;
-	if([showsTable superview]) {
+	// if([showsTable superview]) {
+    if(m_isShowsTable == true) {
 		d = [shows objectAtIndex:indexPath.row];
 	} else {
 		d = [favorites objectAtIndex:indexPath.row];
@@ -483,8 +525,14 @@
 	detailHeadliner.text = [d objectForKey:@"headliner"];
 	detailHeadliner.textColor = textColor;
 	
-	detailOpener.text = [d objectForKey:@"opener"];
-	detailOpener.textColor = textColor;
+    if ([[d objectForKey:@"opener"] isKindOfClass:[NSNull class]]){
+        detailOpener.text = @"";
+        detailOpener.textColor = textColor;
+    }
+    else{
+        detailOpener.text = [d objectForKey:@"opener"];
+        detailOpener.textColor = textColor;
+    }
 	
 	if([[d objectForKey:@"doorTime"] length])
 	{
@@ -604,9 +652,18 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.5];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-	[UIView setAnimationDelegate:self];	
-	tablesHolder.frame = CGRectMake(-320,48,320,391);
-	detailView.frame = CGRectMake(0,48,320,391);
+	[UIView setAnimationDelegate:self];
+    
+    // ChrisLin Modified: 2014-10-20
+    // CGRect rtTablesHolder = tablesHolder.frame;
+	// tablesHolder.frame = CGRectMake(-G_WIDTH, rtTablesHolder.origin.y, rtTablesHolder.size.width, rtTablesHolder.size.height);
+    
+    tablesHolder.frame = [self moveFrameHorz:tablesHolder.frame :(-G_WIDTH)];
+    
+    // CGRect rtDetailsView = detailView.frame;
+	// detailView.frame = CGRectMake(0, rtDetailsView.origin.y, rtDetailsView.size.width, rtDetailsView.size.height);
+    detailView.frame = [self moveFrameHorz:detailView.frame :0];
+    
 	[UIView commitAnimations];
 	
 	//NSLog(@"Full");
@@ -694,7 +751,8 @@
 
 - (IBAction)addToFavoritesAction {
 	NSDictionary *d;
-	if([showsTable superview]) {
+	// if([showsTable superview]) {
+    if(m_isShowsTable == true) {
 		d = [shows objectAtIndex:currentShow];
 	} else {
 		d = [favorites objectAtIndex:currentShow];
@@ -724,9 +782,13 @@
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.5];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-		[UIView setAnimationDelegate:self];	
-		tablesHolder.frame = CGRectMake(0,48,320,391);
-		detailView.frame = CGRectMake(320,48,320,391);
+		[UIView setAnimationDelegate:self];
+        
+		// tablesHolder.frame = CGRectMake(0,48,320,391);
+		// detailView.frame = CGRectMake(320,48,320,391);
+        tablesHolder.frame = [self moveFrameHorz:tablesHolder.frame :0];
+        detailView.frame = [self moveFrameHorz:detailView.frame :G_WIDTH];
+        
 		[UIView commitAnimations];
 		currentView = @"home";
 	} else if([currentView isEqualToString:@"web"]) {
@@ -735,9 +797,12 @@
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.5];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-		[UIView setAnimationDelegate:self];	
-		webView.frame = CGRectMake(320,48,320,361);
-		detailView.frame = CGRectMake(0,48,320,391);
+		[UIView setAnimationDelegate:self];
+        
+        webView.frame = [self moveFrameHorz:webView.frame :G_WIDTH];
+        detailView.frame = [self moveFrameHorz:detailView.frame :0];
+		// webView.frame = CGRectMake(320,48,320,361);
+		// detailView.frame = CGRectMake(0,48,320,391);
 		[UIView commitAnimations];
 		currentView = @"detail";
 	}
@@ -776,7 +841,8 @@
 		currentSongView = [sender superview];
 		
 		NSDictionary *d;
-		if([showsTable superview]) {
+		// if([showsTable superview]) {
+        if(m_isShowsTable == true) {
 			d = [[[shows objectAtIndex:currentShow] objectForKey:@"mp3s"] objectAtIndex:[sender tag]];
 		} else {
 			d = [[[favorites objectAtIndex:currentShow] objectForKey:@"mp3s"] objectAtIndex:[sender tag]];
@@ -860,9 +926,14 @@
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.5];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-		[UIView setAnimationDelegate:self];	
-		webView.frame = CGRectMake(0,48,320,361);
-		detailView.frame = CGRectMake(-320,48,320,392);
+		[UIView setAnimationDelegate:self];
+        
+		// webView.frame = CGRectMake(0,48,320,361);
+		// detailView.frame = CGRectMake(-320,48,320,392);
+        
+        webView.frame = [self moveFrameHorz:webView.frame :0];
+        detailView.frame = [self moveFrameHorz:detailView.frame :(-G_WIDTH)];
+        
 		[UIView commitAnimations];
 	} else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"You must be connected to the internet to buy tickets." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -952,5 +1023,15 @@
 	[favorites release];
 }
 
+- (CGRect) moveFrameHorz: (CGRect) rtFrame :(int) newX{
+    CGRect rtResult = CGRectMake(newX, rtFrame.origin.y, rtFrame.size.width, rtFrame.size.height);
+    return rtResult;
+}
+
+- (NSDictionary*) getTempFavoritesDictFromDefaults{
+    NSData *data = [defaults objectForKey:@"tempFavoritesDict"];
+    NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    return [[NSDictionary alloc] initWithDictionary:dict];
+}
 
 @end

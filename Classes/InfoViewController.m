@@ -9,10 +9,11 @@
 #import "InfoViewController.h"
 #import "MapAnnotation.h"
 #import "VenueConnect.h"
-
+#import "Global.h"
 
 @implementation InfoViewController
 
+#define DEFAULT_POS_Y       49
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +30,10 @@
 	NSArray *faqs = [NSArray arrayWithContentsOfFile:path];
 	
 	backButton.alpha = 0.0;
-	webView.frame = CGRectMake(320,39,320,361);	
+	
+    // webView.frame = CGRectMake(320,39,320,361);
+    // webView.frame = [self moveFrameHorz:webView.frame :G_WIDTH];
+    // webView.frame = [self moveFrameVert:webView.frame :G_HEIGHT];
 	
 	int y = 275;
 	for(NSDictionary *d in faqs) {
@@ -58,13 +62,18 @@
 		y += a.frame.size.height + 15;
 	}
 	
-	mainView.contentSize = CGSizeMake(320,y+10);
-	mainView.frame = CGRectMake(0,39,320,392);
-
-	webView.frame = CGRectMake(0,431,320,361);
+	mainView.contentSize = CGSizeMake(G_WIDTH, y+10);
+	// mainView.frame = CGRectMake(0,39,320,392);
+    mainView.frame = [self moveFrameVert:mainView.frame :DEFAULT_POS_Y];
+    
+	// webView.frame = CGRectMake(0,431,320,361);
+    webView.frame = [self moveFrameVert:webView.frame :G_HEIGHT];
+    
 	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[[VenueConnect sharedVenueConnect] venueURL]]]];	
 	
-	mapView.frame = CGRectMake(0,431,320,361);
+	// mapView.frame = CGRectMake(0,431,320,361);
+    mapView.frame = [self moveFrameVert:mapView.frame :G_HEIGHT];
+    
 	[self placePinsOnMap];
 	CLLocationCoordinate2D location;
 	location.latitude = [[[VenueConnect sharedVenueConnect] venueLatitude] doubleValue];
@@ -85,7 +94,9 @@
 	[UIView setAnimationDuration:0.5];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDelegate:self];	
-	mapView.frame = CGRectMake(0,39,320,361);
+	// mapView.frame = CGRectMake(0,39,320,361);
+    mapView.frame = [self moveFrameVert:mapView.frame :DEFAULT_POS_Y];
+    
 	[UIView commitAnimations];
 }
 
@@ -123,8 +134,10 @@
 		[UIView setAnimationDuration:0.5];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		[UIView setAnimationDelegate:self];	
-		webView.frame = CGRectMake(0,39,320,361);
-		//detailView.frame = CGRectMake(-320,39,320,392);
+		// webView.frame = CGRectMake(0,39,320,361);
+        webView.frame = [self moveFrameVert:webView.frame :DEFAULT_POS_Y];
+        
+		// detailView.frame = CGRectMake(-320,39,320,392);
 		[UIView commitAnimations];
 	} else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"You must be connected to the internet to buy tickets." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -241,23 +254,27 @@
 }
 
 - (IBAction)backAction {
-	if(mapView.frame.origin.y == 39) {
+	if(mapView.frame.origin.y == DEFAULT_POS_Y) {
 		[self hideBackButton];
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.5];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		[UIView setAnimationDelegate:self];	
-		mapView.frame = CGRectMake(0,431,320,361);
+		// mapView.frame = CGRectMake(0,431,320,361);
+        mapView.frame = [self moveFrameVert:mapView.frame :G_HEIGHT];
+        
 		[UIView commitAnimations];
 	}
-	else if(webView.frame.origin.y == 39) {
+	else if(webView.frame.origin.y == DEFAULT_POS_Y) {
 		[self hideBackButton];
 		[self hideWebButtons];
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.5];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		[UIView setAnimationDelegate:self];	
-		webView.frame = CGRectMake(0,431,320,361);
+		// webView.frame = CGRectMake(0,431,320,361);
+        webView.frame = [self moveFrameVert:webView.frame :G_HEIGHT];
+        
 		[UIView commitAnimations];
 	}	
 }
@@ -288,5 +305,14 @@
     [super dealloc];
 }
 
+- (CGRect) moveFrameHorz: (CGRect) rtFrame :(int) newX{
+    CGRect rtResult = CGRectMake(newX, rtFrame.origin.y, rtFrame.size.width, rtFrame.size.height);
+    return rtResult;
+}
+
+- (CGRect) moveFrameVert: (CGRect) rtFrame :(int) newY{
+    CGRect rtResult = CGRectMake(rtFrame.origin.x, newY, rtFrame.size.width, rtFrame.size.height);
+    return rtResult;
+}
 
 @end

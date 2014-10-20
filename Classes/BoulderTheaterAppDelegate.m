@@ -31,9 +31,10 @@
 	[Flurry startSession:[[VenueConnect sharedVenueConnect] flurryAPIKey]];
 	
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-	
+	[[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
 	NSLog(@"Registering for push notifications...");    
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | 
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert |
 																		   UIRemoteNotificationTypeBadge | 
 																		   UIRemoteNotificationTypeSound)];
 	
@@ -43,18 +44,18 @@
 	[self performSelectorInBackground:@selector(setupDefaults) withObject:nil];
 	
 	UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
-	bg.frame = CGRectMake(0,0,320,480);
+	bg.frame = CGRectMake(0,0,G_WIDTH,G_HEIGHT);
 	[window addSubview:bg];
 	[bg release];
 	
-    headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,40)];
+    headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,G_WIDTH,40)];
 	
 	UIImageView *headerLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerBG.png"]];
 	[headerView addSubview:headerLogo];
 	[window addSubview:headerView];
 	[headerLogo release];
 	[headerView release];
-	
+
 	[window addSubview:tabBarController.view];
 
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -64,7 +65,7 @@
 	
 	advert = [UIButton buttonWithType:UIButtonTypeCustom];
 	advert.backgroundColor = [UIColor clearColor];
-	advert.frame = CGRectMake(0,389,320,42);
+	advert.frame = CGRectMake(0,G_HEIGHT - 50 - 41,320,42);
 	advert.clipsToBounds = YES;
 	advert.contentMode = UIViewContentModeTop;
 	advert.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
@@ -76,7 +77,7 @@
 	
 	advertFull = [UIButton buttonWithType:UIButtonTypeCustom];
 	advertFull.backgroundColor = [UIColor clearColor];
-	advertFull.frame = CGRectMake(0,481,320,480);
+	advertFull.frame = CGRectMake(0,G_HEIGHT + 1,320,G_HEIGHT);
 	advertFull.clipsToBounds = YES;
 	advertFull.contentMode = UIViewContentModeTop;
 	advertFull.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
@@ -91,12 +92,12 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil]; 
 	
 	splashView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
-	splashView.frame = CGRectMake(0,0,320,480);
+	splashView.frame = CGRectMake(0,0,320,G_HEIGHT);
 	[window addSubview:splashView];
 	[splashView release];
 	
 	// Set up black background needed for contrast on splash/signup display
-	blackBG = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,480)];
+	blackBG = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,G_HEIGHT)];
 	blackBG.backgroundColor = [UIColor blackColor];
 	blackBG.opaque = YES;
 	blackBG.alpha = 0.0;
@@ -179,7 +180,7 @@
 		[UIView setAnimationDuration:0.4];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		[UIView setAnimationDelegate:self];	
-		advertFull.frame = CGRectMake(0,0,320,480);
+		advertFull.frame = CGRectMake(0,0,320,G_HEIGHT);
 		[UIView commitAnimations];	
 	}
 	else {
@@ -188,7 +189,7 @@
 		[UIView setAnimationDidStopSelector:@selector(changeAdvertImage)];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		[UIView setAnimationDelegate:self];	
-		advertFull.frame = CGRectMake(0,481,320,480);
+		advertFull.frame = CGRectMake(0,G_HEIGHT + 1,320,G_HEIGHT);
 		[UIView commitAnimations];	
 	}
 
@@ -377,7 +378,7 @@
 
 
 - (void)keyboardWillShow {
-	if(textFieldBar.frame.origin.y == 480 && [currentTextField isKindOfClass:[UITextField class]]) {		
+	if(textFieldBar.frame.origin.y == G_HEIGHT && [currentTextField isKindOfClass:[UITextField class]]) {
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.2];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -395,7 +396,7 @@
 			[UIView setAnimationDuration:0.2];
 			[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 			[UIView setAnimationDelegate:self];	
-			textFieldBar.frame = CGRectMake(0,480,320,34);
+			textFieldBar.frame = CGRectMake(0,G_HEIGHT,320,34);
 			[UIView commitAnimations];
 		}
 	}

@@ -12,6 +12,7 @@
 #import "AFHTTPClient.h"
 #import "UIImageView+AFNetworking.h"
 #import "ExternalWebViewController.h"
+#import "Global.h"
 
 #define facebookURL @"http://m.facebook.com/BoulderTheater"
 #define twitterURL @"https://mobile.twitter.com/BoulderTheater"
@@ -23,15 +24,20 @@
 	
 //	self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header_logo.png"]];
 	
-	facebookWebView.frame = CGRectMake(-320,facebookWebView.frame.origin.y,320,facebookWebView.frame.size.height);
-	twitterWebView.frame = CGRectMake(0,twitterWebView.frame.origin.y,320,twitterWebView.frame.size.height);
-	
+	// facebookWebView.frame = CGRectMake(-320,facebookWebView.frame.origin.y,320,facebookWebView.frame.size.height);
+	// twitterWebView.frame = CGRectMake(0,twitterWebView.frame.origin.y,320,twitterWebView.frame.size.height);
+
+	facebookWebView.frame = [self moveFrameHorz:facebookWebView.frame :-G_WIDTH];
+    twitterWebView.frame = [self moveFrameHorz:twitterWebView.frame :0];
+    
 	[self reloadContent];
 }
 
 - (void)showExternalWebView:(NSString*)url {
 	ExternalWebViewController *webViewVC = [[ExternalWebViewController alloc] init];
 	[webViewVC setRootURL:url];
+    
+    // [self presentViewController:webViewVC animated:true completion:nil];
 	[webViewVC release];
 }
 
@@ -64,11 +70,17 @@
 	[UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
 					 animations:^{
 						 if(sender == facebookButton) {
-							 facebookWebView.frame = CGRectMake(0,facebookWebView.frame.origin.y,320,facebookWebView.frame.size.height);
-							 twitterWebView.frame = CGRectMake(320,twitterWebView.frame.origin.y,320,twitterWebView.frame.size.height);
+							 // facebookWebView.frame = CGRectMake(0,facebookWebView.frame.origin.y,320,facebookWebView.frame.size.height);
+							 // twitterWebView.frame = CGRectMake(320,twitterWebView.frame.origin.y,320,twitterWebView.frame.size.height);
+                             facebookWebView.frame = [self moveFrameHorz:facebookWebView.frame :0];
+                             twitterWebView.frame = [self moveFrameHorz:twitterWebView.frame :G_WIDTH];
+                             
 						 } else {
-							 facebookWebView.frame = CGRectMake(-320,facebookWebView.frame.origin.y,320,facebookWebView.frame.size.height);
-							 twitterWebView.frame = CGRectMake(0,twitterWebView.frame.origin.y,320,twitterWebView.frame.size.height);
+							 // facebookWebView.frame = CGRectMake(-320,facebookWebView.frame.origin.y,320,facebookWebView.frame.size.height);
+							 // twitterWebView.frame = CGRectMake(0,twitterWebView.frame.origin.y,320,twitterWebView.frame.size.height);
+                             facebookWebView.frame = [self moveFrameHorz:facebookWebView.frame :-G_WIDTH];
+                             twitterWebView.frame = [self moveFrameHorz:twitterWebView.frame :0];
+                             
 						 }
 					 }
 					 completion:^(BOOL finished){
@@ -95,6 +107,8 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 	NSLog(@"%@",[request.URL absoluteString]);
+    return YES;
+    
 	if([[request.URL absoluteString] isEqualToString:@"about:blank"] || [[request.URL absoluteString] isEqualToString:facebookURL] || [[request.URL absoluteString] isEqualToString:twitterURL]) {
 		return YES;
 	} else {
@@ -851,5 +865,9 @@
 //	[facebookEntries release];
 }
 
+- (CGRect) moveFrameHorz: (CGRect) rtFrame :(int) newX{
+    CGRect rtResult = CGRectMake(newX, rtFrame.origin.y, rtFrame.size.width, rtFrame.size.height);
+    return rtResult;
+}
 
 @end
