@@ -37,7 +37,7 @@
 	[[UIApplication sharedApplication] setStatusBarHidden:YES];
     
 	NSLog(@"Registering for push notifications...");
-    /*
+
     if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)]){
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
         [application registerForRemoteNotifications];
@@ -45,9 +45,10 @@
     else{
         [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound];
     }
-    */
-    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound];
 
+    /*
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound];
+     */
 	defaults = [NSUserDefaults standardUserDefaults];
 	finishedInitLoad = [NSNumber numberWithInt:0];
 	[self performSelectorInBackground:@selector(setupDefaults) withObject:nil];

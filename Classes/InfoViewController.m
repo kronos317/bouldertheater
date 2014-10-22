@@ -83,7 +83,7 @@
 }
 
 - (IBAction)callNumber:(id)sender {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Call %@",[sender titleForState:UIControlStateNormal]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call",nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Call %@",[sender titleForState:UIControlStateNormal]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call",nil];
 	[alert setTag:0];
 	[alert show];
 	[alert release];
@@ -337,14 +337,14 @@
 }
 
 - (IBAction)onBtnCallClick:(id)sender {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Call %@",[sender titleForState:UIControlStateNormal]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call",nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Call %@",[sender titleForState:UIControlStateNormal]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call",nil];
 	[alert setTag:0];
 	[alert show];
 	[alert release];
 }
 
 - (IBAction)onBtnTextClick:(id)sender {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Text message to %@",[sender titleForState:UIControlStateNormal]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"SMS",nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Text message to %@",[sender titleForState:UIControlStateNormal]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"SMS",nil];
 	[alert setTag:2];
 	[alert show];
 	[alert release];
@@ -358,7 +358,7 @@
 			break;
 		case MessageComposeResultFailed:
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Sorry, we encountered an unexpected error while sending SMS.\r\nPlease try again later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Sorry, we encountered an unexpected error while sending SMS.\r\nPlease try again later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert setTag:10];
             [alert show];
             [alert release];
@@ -366,7 +366,7 @@
         }
 		case MessageComposeResultSent:
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Thank you." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Thank you." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert setTag:10];
             [alert show];
             [alert release];
