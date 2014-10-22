@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <MessageUI/MessageUI.h>
 
-
-@interface InfoViewController : UIViewController <UIScrollViewDelegate,MKMapViewDelegate,UIAlertViewDelegate> {
+@interface InfoViewController : UIViewController <UIScrollViewDelegate,MKMapViewDelegate,UIAlertViewDelegate,MFMessageComposeViewControllerDelegate, UINavigationControllerDelegate> {
 	IBOutlet UIScrollView *mainView;
 	IBOutlet MKMapView *mapView;
 	IBOutlet UIButton *backButton;

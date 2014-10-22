@@ -36,7 +36,8 @@
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 	[[UIApplication sharedApplication] setStatusBarHidden:YES];
     
-	NSLog(@"Registering for push notifications...");    
+	NSLog(@"Registering for push notifications...");
+    /*
     if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)]){
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
         [application registerForRemoteNotifications];
@@ -44,7 +45,8 @@
     else{
         [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound];
     }
-
+    */
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound];
 
 	defaults = [NSUserDefaults standardUserDefaults];
 	finishedInitLoad = [NSNumber numberWithInt:0];
@@ -581,7 +583,8 @@
 - (void)postSignup {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	NSString *urlString = [NSString stringWithFormat:@"%@&action=add&device=%@&name=%@&email=%@&phone=%@",[[VenueConnect sharedVenueConnect] appServerUserURL],[[UIDevice currentDevice] uniqueIdentifier],[self getEncodeString:[defaults objectForKey:@"name"]],[self getEncodeString:[defaults objectForKey:@"email"]],[self getEncodeString:[defaults objectForKey:@"phone"]]];
+	NSString *urlString = [NSString stringWithFormat:@"%@&action=add&device=%@&name=%@&email=%@&phone=%@",[[VenueConnect sharedVenueConnect] appServerUserURL],[[UIDevice currentDevice] identifierForVendor],[self getEncodeString:[defaults objectForKey:@"name"]],[self getEncodeString:[defaults objectForKey:@"email"]],[self getEncodeString:[defaults objectForKey:@"phone"]]];
+    
 	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
 	NSData *urlData;
 	NSURLResponse *response;

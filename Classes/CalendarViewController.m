@@ -145,7 +145,7 @@
 			label.textColor = [UIColor whiteColor];
 			label.numberOfLines = 0;
 			label.font = [UIFont boldSystemFontOfSize:13];
-			label.textAlignment = UITextAlignmentCenter;
+			label.textAlignment = NSTextAlignmentCenter;
 			label.text = @"You must be connected to the internet to get the list of the newest shows.";
 			[label sizeToFit];
 			[self.view addSubview:label];
@@ -216,7 +216,9 @@
 			[dateFormatter setDateStyle:NSDateFormatterShortStyle];
 			[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
 			NSDate *date = [dateFormatter dateFromString:[[defaults objectForKey:@"tempFavoritesDict"] objectForKey:@"showDate"]];
-			date = [date addTimeInterval:-216000 - timeDiff];
+            date = [date dateByAddingTimeInterval:-216000 - timeDiff];
+			// date = [date addTimeInterval:-216000 - timeDiff];
+            
 			[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 			NSString *newDate = [dateFormatter stringFromDate:date];
 			
@@ -351,7 +353,7 @@
 		button.backgroundColor = [UIColor clearColor];
 		button.tag = indexPath.row;
 		[button addTarget:self action:@selector(accessoryAction:) forControlEvents:UIControlEventTouchUpInside];
-		[button setBackgroundImage:[UIImage imageNamed:@"cellAccessory.png"] forState:UIControlStateNormal];
+		[button setBackgroundImage:[UIImage imageNamed:@"star.png"] forState:UIControlStateNormal];
 		cell.accessoryView = button;
 		
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -389,8 +391,8 @@
 		else {
 			[cell.show setText:[[shows objectAtIndex:indexPath.row] objectForKey:@"title"]];
 		}
-		
-		CGSize newShowSize = [cell.show.text sizeWithFont:cell.show.font constrainedToSize:cell.show.frame.size lineBreakMode:UILineBreakModeWordWrap];
+        
+		CGSize newShowSize = [cell.show.text sizeWithFont:cell.show.font constrainedToSize:cell.show.frame.size lineBreakMode:NSLineBreakByWordWrapping];
 		cell.show.frame = CGRectMake(56,26,228,newShowSize.height);
 		cell.showtime.text = [[[shows objectAtIndex:indexPath.row] objectForKey:@"showTime"] uppercaseString];
 		
@@ -445,7 +447,7 @@
 		//cell.show.text = [[favorites objectAtIndex:indexPath.row] objectForKey:@"title"];
 		
 		
-		CGSize newShowSize = [cell.show.text sizeWithFont:cell.show.font constrainedToSize:cell.show.frame.size lineBreakMode:UILineBreakModeWordWrap];
+		CGSize newShowSize = [cell.show.text sizeWithFont:cell.show.font constrainedToSize:cell.show.frame.size lineBreakMode:NSLineBreakByWordWrapping];
 		cell.show.frame = CGRectMake(56,26,228,newShowSize.height);
 		cell.showtime.text = [[[favorites objectAtIndex:indexPath.row] objectForKey:@"showTime"] uppercaseString];
 		cell.doors.text = [[[favorites objectAtIndex:indexPath.row] objectForKey:@"doorTime"] uppercaseString];
@@ -476,8 +478,8 @@
 			[alert release];
 		} else {
 			//ADD TO FAVORITES
-            int index = [sender tag];
-            NSObject *obj = [shows objectAtIndex:index];
+            // int index = [sender tag];
+            // NSObject *obj = [shows objectAtIndex:index];
             // ChrisLin Modified: 2014-10-20   ====>   Raises error "Attempt to set a non-property-list object"
 			[defaults setObject:[shows objectAtIndex:[sender tag]] forKey:@"tempFavoritesDict"];
             // [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:obj] forKey:@"tempFavoritesDict"];

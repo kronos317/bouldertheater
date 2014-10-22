@@ -36,10 +36,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier"];
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"photoview-cell"];
 	
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"identifier"] autorelease];
+		// cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"identifier"] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"photoview-cell"] autorelease];
 	}
 	
 	cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;

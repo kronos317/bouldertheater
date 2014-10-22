@@ -68,7 +68,7 @@
 			label.textColor = [UIColor whiteColor];
 			label.numberOfLines = 0;
 			label.font = [UIFont boldSystemFontOfSize:13];
-			label.textAlignment = UITextAlignmentCenter;
+			label.textAlignment = NSTextAlignmentCenter;
 			label.text = @"You must be connected to the internet to view the photo galleries.";
 			[label sizeToFit];
 			[self.view addSubview:label];
@@ -121,8 +121,8 @@
 	if([[VenueConnect sharedVenueConnect] isConnectedToInternet]) {
 		appDelegate.advert.alpha = 0.0;
 		photosViewer.navigationBar.topItem.title = [[[sets objectAtIndex:indexPath.row] objectForKey:@"title"] objectForKey:@"_content"];
-		[photoViewController setSource:[NSString stringWithFormat:[defaults objectForKey:@"set_string"],[[sets objectAtIndex:indexPath.row] objectForKey:@"id"]]];
-		[appDelegate.tabBarController presentModalViewController:photosViewer animated:YES];
+		[photoViewController setSource: @[[NSString stringWithFormat:[defaults objectForKey:@"set_string"],[[sets objectAtIndex:indexPath.row] objectForKey:@"id"]]]];
+        [appDelegate.tabBarController presentViewController:photosViewer animated:YES completion:nil];
 	} else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"You must be connected to the internet to view this gallery's photos." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
@@ -142,7 +142,7 @@
 	appDelegate.advert.alpha = 1.0;
 	[UIView commitAnimations];
 	
-	[appDelegate.tabBarController dismissModalViewControllerAnimated:YES];
+    [appDelegate.tabBarController dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

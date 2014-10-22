@@ -34,7 +34,7 @@
                             <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="16">
+                        <button hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="16">
                             <rect key="frame" x="15" y="37" width="159" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
@@ -112,6 +112,28 @@ Boulder, CO 80302</string>
                             <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FJH-lh-1c0">
+                            <rect key="frame" x="12" y="33" width="149" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="(303) 786-7030" backgroundImage="call.png">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="onBtnCallClick:" destination="-1" eventType="touchUpInside" id="y31-lb-eAe"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wEQ-hP-htz">
+                            <rect key="frame" x="158" y="33" width="149" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="(303) 786-7030" backgroundImage="text.png">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="onBtnTextClick:" destination="-1" eventType="touchUpInside" id="Hv0-iq-bKG"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="31"/>
                     <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="31"/>
@@ -120,14 +142,14 @@ Boulder, CO 80302</string>
                     </connections>
                 </scrollView>
                 <mapView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" mapType="standard" id="8">
-                    <rect key="frame" x="0.0" y="49" width="320" height="519"/>
+                    <rect key="frame" x="1000" y="49" width="320" height="519"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="9"/>
                     </connections>
                 </mapView>
                 <webView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scalesPageToFit="YES" id="40">
-                    <rect key="frame" x="0.0" y="49" width="320" height="519"/>
+                    <rect key="frame" x="1000" y="49" width="320" height="519"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
@@ -195,6 +217,8 @@ Boulder, CO 80302</string>
         <image name="buttonMap.png" width="295" height="61"/>
         <image name="buttonWebBack.png" width="41" height="32"/>
         <image name="buttonWebForward.png" width="41" height="32"/>
+        <image name="call.png" width="149" height="47"/>
         <image name="header.png" width="320" height="56"/>
+        <image name="text.png" width="149" height="47"/>
     </resources>
 </document>

@@ -13,6 +13,7 @@
 
 @implementation InfoViewController
 
+
 #define DEFAULT_POS_Y       49
 
 - (void)viewDidLoad {
@@ -223,15 +224,35 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if([alertView tag] == 0) {
 		if(buttonIndex == 1) {
+            // Call
+            NSString *number = @"3037867030";
+            /*
 			NSString *number = [[[[[alertView.message stringByReplacingOccurrencesOfString:@"Call (" withString:@""] stringByReplacingOccurrencesOfString:@")" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@"." withString:@""];
+             */
 			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",number]]];
 		}
-	} else {
+	} else if ([alertView tag] == 1){
 		if(buttonIndex == 1) {
+            // Map
 			NSString *url = [NSString stringWithFormat: @"http://maps.google.com/maps?daddr=%f,%f", [[[VenueConnect sharedVenueConnect] venueLatitude] doubleValue],[[[VenueConnect sharedVenueConnect] venueLongitude] doubleValue]];
 			[[UIApplication sharedApplication] openURL: [NSURL URLWithString:url]];
 		}
 	}
+    else if ([alertView tag] == 2){
+        if (buttonIndex == 1){
+            // SMS
+            NSString *number = @"1(303)786-7030";
+            MFMessageComposeViewController *controller = [[[MFMessageComposeViewController alloc] init] autorelease];
+            if([MFMessageComposeViewController canSendText])
+            {
+                controller.body = @"";
+                controller.recipients = [NSArray arrayWithObjects:number, nil];
+                controller.messageComposeDelegate = self;
+                [self presentViewController:controller animated:YES completion:nil];
+                // [self presentModalViewController:controller animated:YES];
+            }
+        }
+    }
 }
 
 
@@ -313,6 +334,49 @@
 - (CGRect) moveFrameVert: (CGRect) rtFrame :(int) newY{
     CGRect rtResult = CGRectMake(rtFrame.origin.x, newY, rtFrame.size.width, rtFrame.size.height);
     return rtResult;
+}
+
+- (IBAction)onBtnCallClick:(id)sender {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Call %@",[sender titleForState:UIControlStateNormal]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call",nil];
+	[alert setTag:0];
+	[alert show];
+	[alert release];
+}
+
+- (IBAction)onBtnTextClick:(id)sender {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Text message to %@",[sender titleForState:UIControlStateNormal]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"SMS",nil];
+	[alert setTag:2];
+	[alert show];
+	[alert release];
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+	switch (result) {
+		case MessageComposeResultCancelled:
+			NSLog(@"Cancelled");
+			break;
+		case MessageComposeResultFailed:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Sorry, we encountered an unexpected error while sending SMS.\r\nPlease try again later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert setTag:10];
+            [alert show];
+            [alert release];
+            break;
+        }
+		case MessageComposeResultSent:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Thank you." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert setTag:10];
+            [alert show];
+            [alert release];
+            
+            break;
+        }
+		default:
+			break;
+	}
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
