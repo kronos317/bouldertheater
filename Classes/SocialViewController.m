@@ -9,8 +9,8 @@
 #import "SocialViewController.h"
 #import "JSON.h"
 #import "VenueConnect.h"
-#import "AFHTTPClient.h"
-#import "UIImageView+AFNetworking.h"
+// #import "AFHTTPClient.h"
+// #import "UIImageView+AFNetworking.h"
 #import "ExternalWebViewController.h"
 #import "Global.h"
 

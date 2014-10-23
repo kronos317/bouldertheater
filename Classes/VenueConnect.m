@@ -55,13 +55,6 @@ static VenueConnect *sharedVenueConnect = nil;
     return NSUIntegerMax;  //denotes an object that cannot be released
 }
 
-
-- (void)release
-{
-    //never release
-}
-
-
 - (id)autorelease
 {
     return self;
@@ -88,6 +81,11 @@ static VenueConnect *sharedVenueConnect = nil;
 	return ([NSString stringWithContentsOfURL:[NSURL URLWithString:[configuration objectForKey:@"internetConnectionCheckURL"]] encoding:NSUTF8StringEncoding error:nil]!=NULL)?YES:NO;
 }
 
+- (NSString *) getConfigKey: (NSString *)key{
+    return [configuration objectForKey:key];
+}
+
+/*
 - (NSString *) appName {
 	return [configuration objectForKey:@"appName"];
 }
@@ -206,5 +204,6 @@ static VenueConnect *sharedVenueConnect = nil;
 - (NSString *) appStoreURL {
 	return [configuration objectForKey:@"appStoreURL"];
 }
-
+*/
+ 
 @end

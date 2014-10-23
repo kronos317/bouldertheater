@@ -70,15 +70,20 @@
 	// webView.frame = CGRectMake(0,431,320,361);
     webView.frame = [self moveFrameVert:webView.frame :G_HEIGHT];
     
-	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[[VenueConnect sharedVenueConnect] venueURL]]]];	
-	
+	// [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[[VenueConnect sharedVenueConnect] venueURL]]]];
+	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[[VenueConnect sharedVenueConnect] getConfigKey:@"venueURL"]]]];
+    
 	// mapView.frame = CGRectMake(0,431,320,361);
     mapView.frame = [self moveFrameVert:mapView.frame :G_HEIGHT];
     
 	[self placePinsOnMap];
 	CLLocationCoordinate2D location;
-	location.latitude = [[[VenueConnect sharedVenueConnect] venueLatitude] doubleValue];
-	location.longitude = [[[VenueConnect sharedVenueConnect] venueLongitude] doubleValue];
+	// location.latitude = [[[VenueConnect sharedVenueConnect] venueLatitude] doubleValue];
+	// location.longitude = [[[VenueConnect sharedVenueConnect] venueLongitude] doubleValue];
+    
+    location.latitude = [[[VenueConnect sharedVenueConnect] getConfigKey:@"venueLatitude"] doubleValue];
+    location.longitude = [[[VenueConnect sharedVenueConnect] getConfigKey:@"venueLongitude"] doubleValue];
+    
 	[mapView setRegion:MKCoordinateRegionMake(location,MKCoordinateSpanMake(0.01, 0.01)) animated:YES];
 }
 
@@ -178,12 +183,18 @@
 	
 	CLLocationCoordinate2D location;
 
-	location.latitude = [[[VenueConnect sharedVenueConnect] venueLatitude] doubleValue];
-	location.longitude = [[[VenueConnect sharedVenueConnect] venueLongitude] doubleValue];
+	// location.latitude = [[[VenueConnect sharedVenueConnect] venueLatitude] doubleValue];
+	// location.longitude = [[[VenueConnect sharedVenueConnect] venueLongitude] doubleValue];
+    
+    location.latitude = [[[VenueConnect sharedVenueConnect] getConfigKey:@"venueLatitude"] doubleValue];
+    location.longitude = [[[VenueConnect sharedVenueConnect] getConfigKey:@"venueLongitude"] doubleValue];
 	
 	MapAnnotation *annotation = [[MapAnnotation alloc] initWithCoordinate:location];
-	annotation.title = [[VenueConnect sharedVenueConnect] venueName];
-	annotation.subtitle = [NSString stringWithFormat:@"%@, %@", [[VenueConnect sharedVenueConnect] venueCity], [[VenueConnect sharedVenueConnect] venueState]];
+	// annotation.title = [[VenueConnect sharedVenueConnect] venueName];
+	// annotation.subtitle = [NSString stringWithFormat:@"%@, %@", [[VenueConnect sharedVenueConnect] venueCity], [[VenueConnect sharedVenueConnect] venueState]];
+    annotation.title = [[VenueConnect sharedVenueConnect] getConfigKey:@"venueName"];
+    annotation.subtitle = [NSString stringWithFormat:@"%@, %@", [[VenueConnect sharedVenueConnect] getConfigKey:@"venueCity"], [[VenueConnect sharedVenueConnect] getConfigKey:@"venueState"]];
+    
 	[mapView addAnnotation:annotation];
 	[annotation release];
 }
@@ -210,8 +221,9 @@
 }
 
 - (void)mapView:(MKMapView *)map annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-	NSString *myPrompt = [NSString stringWithFormat:@"Would you like to get directions to the %@? This will close this application and open the native Maps application.", [[VenueConnect sharedVenueConnect] venueName]];
-	
+	// NSString *myPrompt = [NSString stringWithFormat:@"Would you like to get directions to the %@? This will close this application and open the native Maps application.", [[VenueConnect sharedVenueConnect] venueName]];
+	NSString *myPrompt = [NSString stringWithFormat:@"Would you like to get directions to the %@? This will close this application and open the native Maps application.", [[VenueConnect sharedVenueConnect] getConfigKey:@"venueName"]];
+    
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[(MapAnnotation *)[[map annotations] objectAtIndex:[control tag]] title] message:myPrompt delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Directions",nil];
 	[alert setTag:1];
 	[alert show];
@@ -234,7 +246,9 @@
 	} else if ([alertView tag] == 1){
 		if(buttonIndex == 1) {
             // Map
-			NSString *url = [NSString stringWithFormat: @"http://maps.google.com/maps?daddr=%f,%f", [[[VenueConnect sharedVenueConnect] venueLatitude] doubleValue],[[[VenueConnect sharedVenueConnect] venueLongitude] doubleValue]];
+			// NSString *url = [NSString stringWithFormat: @"http://maps.google.com/maps?daddr=%f,%f", [[[VenueConnect sharedVenueConnect] venueLatitude] doubleValue],[[[VenueConnect sharedVenueConnect] venueLongitude] doubleValue]];
+            NSString *url = [NSString stringWithFormat: @"http://maps.google.com/maps?daddr=%f,%f", [[[VenueConnect sharedVenueConnect] getConfigKey:@"venueLatitude"] doubleValue],[[[VenueConnect sharedVenueConnect] getConfigKey:@"venueLongitude"] doubleValue]];
+            
 			[[UIApplication sharedApplication] openURL: [NSURL URLWithString:url]];
 		}
 	}

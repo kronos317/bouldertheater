@@ -17,8 +17,10 @@
 
 - (BOOL)isConnectedToInternet;
 
+- (NSString *) getConfigKey: (NSString *)key;
 // The following methods relate to settings stored in the venueConfiguration.plist
 
+/*
 - (NSString *) appName;									// The name of the app - max of 11 characters
 - (NSString *) venueName;								// The name of the venue to be used in the user registration interface and elsewhere.
 - (NSString *) venueURL;								// URL of venue - used for building URLs for song playback.  
@@ -53,4 +55,6 @@
 - (NSString *) adImagesURL;								// This is typically the same for all venueConnect products
 - (NSString *) uploadPostImageURL;						// This is typically the same for all venueConnect products
 - (NSString *) appStoreURL;								// Change to match the published app URL
+ 
+*/
 @end

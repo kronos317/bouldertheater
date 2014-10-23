@@ -11,7 +11,7 @@
 #import "JSON.h"
 #import "Flurry.h"
 #import	"VenueConnect.h"
-#import "Crittercism.h"
+// #import "Crittercism.h"
 
 @implementation BoulderTheaterAppDelegate
 
@@ -29,9 +29,12 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
-	[Flurry startSession:[[VenueConnect sharedVenueConnect] flurryAPIKey]];
-    NSString *szCrittercismAppId = [[VenueConnect sharedVenueConnect] crittercismAppId];
-    [Crittercism enableWithAppID:szCrittercismAppId];
+	// [Flurry startSession:[[VenueConnect sharedVenueConnect] flurryAPIKey]];
+    [Flurry startSession:[[VenueConnect sharedVenueConnect] getConfigKey:@"flurryAPIKey"]];
+    // NSString *szCrittercismAppId = [[VenueConnect sharedVenueConnect] crittercismAppId];
+    // NSString *szCrittercismAppId = [[VenueConnect sharedVenueConnect] getConfigKey:@"crittercismAppId"];
+    
+    // [Crittercism enableWithAppID:szCrittercismAppId];
 	
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 	[[UIApplication sharedApplication] setStatusBarHidden:YES];
@@ -294,7 +297,9 @@
 		NSString *adImage = [NSString stringWithFormat:@"/%@",[defaults objectForKey:@"ad_image"]];
 
 		//if(![[NSFileManager defaultManager] fileExistsAtPath:[documentsDirectory stringByAppendingString:adImage]]) {
-			NSURL *myURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[[VenueConnect sharedVenueConnect] adImagesURL], [defaults objectForKey:@"ad_image"]]];
+			// NSURL *myURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[[VenueConnect sharedVenueConnect] adImagesURL], [defaults objectForKey:@"ad_image"]]];
+            NSURL *myURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[[VenueConnect sharedVenueConnect] getConfigKey:@"adImagesURL"], [defaults objectForKey:@"ad_image"]]];
+        
 			NSData *data = [NSData dataWithContentsOfURL:myURL];
 			if(!data) {
 				adImage = nil;
@@ -306,7 +311,9 @@
 		NSString *adShortImage = [NSString stringWithFormat:@"/%@",[defaults objectForKey:@"ad_short_image"]];
 		
 		//if(![[NSFileManager defaultManager] fileExistsAtPath:[documentsDirectory stringByAppendingString:adShortImage]]) {
-			myURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[[VenueConnect sharedVenueConnect] adImagesURL],[defaults objectForKey:@"ad_short_image"]]];
+			// myURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[[VenueConnect sharedVenueConnect] adImagesURL],[defaults objectForKey:@"ad_short_image"]]];
+            myURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[[VenueConnect sharedVenueConnect] getConfigKey:@"adImagesURL"],[defaults objectForKey:@"ad_short_image"]]];
+        
 			data = [NSData dataWithContentsOfURL:myURL];
 			if(!data) {
 				adShortImage = nil;
@@ -354,9 +361,12 @@
 	}
 	
 	// Authenticate to the server
-	request.username = [[VenueConnect sharedVenueConnect] pushNotificationApplicationKey];
-	request.password = [[VenueConnect sharedVenueConnect] pushNotificationApplicationSecret];
+	// request.username = [[VenueConnect sharedVenueConnect] pushNotificationApplicationKey];
+	// request.password = [[VenueConnect sharedVenueConnect] pushNotificationApplicationSecret];
 	
+    request.username = [[VenueConnect sharedVenueConnect] getConfigKey:@"pushNotificationApplicationKey"];
+    request.password = [[VenueConnect sharedVenueConnect] getConfigKey:@"pushNotificationApplicationSecret"];
+    
 	[request setDelegate:self];
 	[queue addOperation:request];
 	
@@ -584,7 +594,8 @@
 - (void)postSignup {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	NSString *urlString = [NSString stringWithFormat:@"%@&action=add&device=%@&name=%@&email=%@&phone=%@",[[VenueConnect sharedVenueConnect] appServerUserURL],[[UIDevice currentDevice] identifierForVendor],[self getEncodeString:[defaults objectForKey:@"name"]],[self getEncodeString:[defaults objectForKey:@"email"]],[self getEncodeString:[defaults objectForKey:@"phone"]]];
+	// NSString *urlString = [NSString stringWithFormat:@"%@&action=add&device=%@&name=%@&email=%@&phone=%@",[[VenueConnect sharedVenueConnect] appServerUserURL],[[UIDevice currentDevice] identifierForVendor],[self getEncodeString:[defaults objectForKey:@"name"]],[self getEncodeString:[defaults objectForKey:@"email"]],[self getEncodeString:[defaults objectForKey:@"phone"]]];
+    NSString *urlString = [NSString stringWithFormat:@"%@&action=add&device=%@&name=%@&email=%@&phone=%@",[[VenueConnect sharedVenueConnect] getConfigKey:@"appServerUserURL"],[[UIDevice currentDevice] identifierForVendor],[self getEncodeString:[defaults objectForKey:@"name"]],[self getEncodeString:[defaults objectForKey:@"email"]],[self getEncodeString:[defaults objectForKey:@"phone"]]];
     
 	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
 	NSData *urlData;
@@ -618,7 +629,9 @@
 	//GET FEED LOCATIONS
 	if([[VenueConnect sharedVenueConnect] isConnectedToInternet]) {
 		
-		NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[[VenueConnect sharedVenueConnect] appServerFeedURL]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
+		// NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[[VenueConnect sharedVenueConnect] appServerFeedURL]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[[VenueConnect sharedVenueConnect] getConfigKey:@"appServerFeedURL"]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
+        
 		NSData *urlData;
 		NSURLResponse *response;
 		NSError *error;
@@ -641,9 +654,13 @@
 		}
 	} else {
 		if(![defaults objectForKey:@"shows_feed"]) {
-			[defaults setObject:[[VenueConnect sharedVenueConnect] defaultJSONCalendarFeedURL] forKey:@"shows_feed"];
-			[defaults setObject:[[VenueConnect sharedVenueConnect] defaultTwitterFeedURL] forKey:@"twitter_feed"];
-			[defaults setObject:[[VenueConnect sharedVenueConnect] defaultFacebookFeedURL] forKey:@"facebook_feed"];
+			// [defaults setObject:[[VenueConnect sharedVenueConnect] defaultJSONCalendarFeedURL] forKey:@"shows_feed"];
+			// [defaults setObject:[[VenueConnect sharedVenueConnect] defaultTwitterFeedURL] forKey:@"twitter_feed"];
+			// [defaults setObject:[[VenueConnect sharedVenueConnect] defaultFacebookFeedURL] forKey:@"facebook_feed"];
+            
+            [defaults setObject:[[VenueConnect sharedVenueConnect] getConfigKey:@"defaultJSONCalendarFeedURL"] forKey:@"shows_feed"];
+            [defaults setObject:[[VenueConnect sharedVenueConnect] getConfigKey:@"defaultTwitterFeedURL"] forKey:@"twitter_feed"];
+            [defaults setObject:[[VenueConnect sharedVenueConnect] getConfigKey:@"defaultFacebookFeedURL"] forKey:@"facebook_feed"];
 		}
 	}
 	

@@ -57,6 +57,8 @@
 
 // Adds a rectangular path to the given context and rounds its corners by the given extents
 // Original author: Björn Sållarp. Used with permission. See: http://blog.sallarp.com/iphone-uiimage-round-corners/
+
+
 - (void)addRoundedRectToPath:(CGRect)rect context:(CGContextRef)context ovalWidth:(CGFloat)ovalWidth ovalHeight:(CGFloat)ovalHeight {
     if (ovalWidth == 0 || ovalHeight == 0) {
         CGContextAddRect(context, rect);

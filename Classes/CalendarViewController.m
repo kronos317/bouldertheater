@@ -250,8 +250,11 @@
 									  ] dataUsingEncoding:NSUTF8StringEncoding]];			
 */			
 			// Authenticate to the server
-			request.username = [[VenueConnect sharedVenueConnect] pushNotificationApplicationKey];
-			request.password = [[VenueConnect sharedVenueConnect] pushNotificationApplicationSecret];
+			// request.username = [[VenueConnect sharedVenueConnect] pushNotificationApplicationKey];
+			// request.password = [[VenueConnect sharedVenueConnect] pushNotificationApplicationSecret];
+            request.username = [[VenueConnect sharedVenueConnect] getConfigKey:@"pushNotificationApplicationKey"];
+            request.password = [[VenueConnect sharedVenueConnect] getConfigKey:@"pushNotificationApplicationSecret"];
+            
 			[request setDelegate:self];
 			[request startAsynchronous];
 			
@@ -863,7 +866,8 @@
 		NSString *song;
 		
 		if([firstChar isEqualToString:@"/"]) {
-			song = [NSString stringWithFormat:@"%@%@",[[VenueConnect sharedVenueConnect] venueURL],[[d objectForKey:@"url"] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]];
+			// song = [NSString stringWithFormat:@"%@%@",[[VenueConnect sharedVenueConnect] venueURL],[[d objectForKey:@"url"] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]];
+            song = [NSString stringWithFormat:@"%@%@",[[VenueConnect sharedVenueConnect] getConfigKey:@"venueURL"],[[d objectForKey:@"url"] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]];
 		} else {
 			song = [[d objectForKey:@"url"] stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
 		}
