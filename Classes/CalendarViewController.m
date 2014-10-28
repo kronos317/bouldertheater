@@ -53,7 +53,7 @@
         
         shows = nil;
         if([tempShows count] > 0) {
-            shows = [[NSArray arrayWithArray:tempShows] retain];
+            shows = [[NSMutableArray arrayWithArray:tempShows] retain];
             for (NSDictionary *d in shows){
                 if ([[d objectForKey:@"opener"] isKindOfClass:[NSNull class]]){
                     [d setValue:@"" forKey:@"opener"];
@@ -65,9 +65,29 @@
         
     }
     
+    /***** Remove past shows from [shows] *****/
+    
+    NSMutableArray *pastShows = [NSMutableArray arrayWithCapacity:4];
+    for (NSDictionary *d in shows){
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+        [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+        NSDate *date = [dateFormatter dateFromString:[d objectForKey:@"showDate"]];
+        date = [date dateByAddingTimeInterval:86400];
+        // date = [date addTimeInterval:86400];
+        [dateFormatter release];
+        
+        NSDate *today = [NSDate date];
+        //NSLog(@"%@ : %@ :: %@",date,today,[today laterDate:date]);
+        if([today laterDate:date] == today) {
+            [pastShows addObject:d];
+        }
+    }
+    [shows removeObjectsInArray:pastShows];
+    
 	favorites = [[NSMutableArray arrayWithArray:[defaults objectForKey:@"favorites"]] retain];
 	
-	NSMutableArray *pastShows = [NSMutableArray arrayWithCapacity:4];
+	NSMutableArray *pastFavs = [NSMutableArray arrayWithCapacity:4];
 	for(NSDictionary *d in favorites) {
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setDateStyle:NSDateFormatterShortStyle];
@@ -80,10 +100,10 @@
 		NSDate *today = [NSDate date];
 		//NSLog(@"%@ : %@ :: %@",date,today,[today laterDate:date]);
 		if([today laterDate:date] == today) {
-			[pastShows addObject:d];
+			[pastFavs addObject:d];
 		}
 	}
-	[favorites removeObjectsInArray:pastShows];
+	[favorites removeObjectsInArray:pastFavs];
 	[defaults setObject:favorites forKey:@"favorites"];
 	[self reloadTables];
 	
@@ -125,13 +145,34 @@
 		if([tempShows count] > 0) {
 			[shows release];
 			shows = nil;
-			shows = [[NSArray arrayWithArray:tempShows] retain];
+			shows = [[NSMutableArray arrayWithArray:tempShows] retain];
             for (NSDictionary *d in shows){
                 if ([[d objectForKey:@"opener"] isKindOfClass:[NSNull class]]){
                     [d setValue:@"" forKey:@"opener"];
                 }
             }
 			// [defaults setObject:shows forKey:@"shows"];
+            
+            /***** Remove past shows from [shows] *****/
+            
+            NSMutableArray *pastShows = [NSMutableArray arrayWithCapacity:4];
+            for (NSDictionary *d in shows){
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+                [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+                NSDate *date = [dateFormatter dateFromString:[d objectForKey:@"showDate"]];
+                date = [date dateByAddingTimeInterval:86400];
+                // date = [date addTimeInterval:86400];
+                [dateFormatter release];
+                
+                NSDate *today = [NSDate date];
+                //NSLog(@"%@ : %@ :: %@",date,today,[today laterDate:date]);
+                if([today laterDate:date] == today) {
+                    [pastShows addObject:d];
+                }
+            }
+            [shows removeObjectsInArray:pastShows];
+            
             [defaults setObject:processedString forKey:@"shows"];
 		}
 		

@@ -14,7 +14,7 @@
 @interface CalendarViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UIWebViewDelegate> {
 	BoulderTheaterAppDelegate *appDelegate;
 	
-	NSArray *shows;
+	NSMutableArray *shows;
 	NSMutableArray *favorites;
 	NSUserDefaults *defaults;
 	NSString *currentView;
