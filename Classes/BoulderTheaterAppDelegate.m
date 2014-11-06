@@ -48,10 +48,9 @@
     else{
         [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound];
     }
-
-    /*
-    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound];
-     */
+    
+    // [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound];
+    
 	defaults = [NSUserDefaults standardUserDefaults];
 	finishedInitLoad = [NSNumber numberWithInt:0];
 	[self performSelectorInBackground:@selector(setupDefaults) withObject:nil];

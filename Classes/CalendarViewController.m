@@ -128,8 +128,10 @@
         NSString *szUrl = [defaults objectForKey:@"shows_feed"];
         NSLog(@"%@",szUrl);
         
-		NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"shows_feed"]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
-		
+		// NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"shows_feed"]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
+        
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:szUrl]];
+        
 		NSData *urlData;
 		NSURLResponse *response;
 		NSError *error;
