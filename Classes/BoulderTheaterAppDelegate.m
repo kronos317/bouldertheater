@@ -30,7 +30,7 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
 	// [Flurry startSession:[[VenueConnect sharedVenueConnect] flurryAPIKey]];
-    [Flurry startSession:[[VenueConnect sharedVenueConnect] getConfigKey:@"flurryAPIKey"]];
+    // [Flurry startSession:[[VenueConnect sharedVenueConnect] getConfigKey:@"flurryAPIKey"]];
     // NSString *szCrittercismAppId = [[VenueConnect sharedVenueConnect] crittercismAppId];
     // NSString *szCrittercismAppId = [[VenueConnect sharedVenueConnect] getConfigKey:@"crittercismAppId"];
     

@@ -127,10 +127,14 @@
 		
         NSString *szUrl = [defaults objectForKey:@"shows_feed"];
         NSLog(@"%@",szUrl);
-        
+        if (szUrl == nil || szUrl.length == 0){
+            szUrl = @"http://www.bouldertheater.com/jsonfeed";
+        }
 		// NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"shows_feed"]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
-        
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:szUrl]];
+
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"shows_feed"]] cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:30];
+
+        // NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:szUrl]];
         
 		NSData *urlData;
 		NSURLResponse *response;
