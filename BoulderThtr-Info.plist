@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>Boulder Theater</string>
+	<string>Fox Theater</string>
 	<key>CFBundleExecutable</key>
-	<string>Boulder Theater</string>
+	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIcons</key>
@@ -24,19 +24,19 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.ragedigital.bouldertheater</string>
+	<string>com.ragedigital.The-Fox</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Boulder Theater</string>
+	<string>The Fox</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.7</string>
+	<string>2.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2.7.2</string>
+	<string>2.2.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMainNibFile</key>

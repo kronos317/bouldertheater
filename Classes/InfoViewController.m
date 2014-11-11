@@ -36,7 +36,7 @@
     // webView.frame = [self moveFrameHorz:webView.frame :G_WIDTH];
     // webView.frame = [self moveFrameVert:webView.frame :G_HEIGHT];
 	
-	int y = 275;
+	int y = 455;
 	for(NSDictionary *d in faqs) {
 		UILabel *q = [[UILabel alloc] initWithFrame:CGRectMake(15,y,290,30)];
 		q.backgroundColor = [UIColor clearColor];
@@ -53,7 +53,7 @@
 		UILabel *a = [[UILabel alloc] initWithFrame:CGRectMake(15,y,290,30)];
 		a.backgroundColor = [UIColor clearColor];
 		a.font = [UIFont systemFontOfSize:13];
-		a.textColor = [UIColor darkGrayColor];
+		a.textColor = [UIColor whiteColor];
 		a.numberOfLines = 0;
 		a.text = [d objectForKey:@"answer"];
 		[a sizeToFit];
@@ -88,7 +88,7 @@
 }
 
 - (IBAction)callNumber:(id)sender {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Call %@",[sender titleForState:UIControlStateNormal]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call",nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Call %@",[[VenueConnect sharedVenueConnect] getConfigKey:@"venueBoxCallNumber"]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call",nil];
 	[alert setTag:0];
 	[alert show];
 	[alert release];
@@ -237,7 +237,7 @@
 	if([alertView tag] == 0) {
 		if(buttonIndex == 1) {
             // Call
-            NSString *number = @"3037867030";
+            NSString *number = [[VenueConnect sharedVenueConnect] getConfigKey:@"venueBoxCallNumber"];
             /*
 			NSString *number = [[[[[alertView.message stringByReplacingOccurrencesOfString:@"Call (" withString:@""] stringByReplacingOccurrencesOfString:@")" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@"." withString:@""];
              */
@@ -255,7 +255,29 @@
     else if ([alertView tag] == 2){
         if (buttonIndex == 1){
             // SMS
-            NSString *number = @"1(303)786-7030";
+            NSString *number = [[VenueConnect sharedVenueConnect] getConfigKey:@"venueBoxTextNumber"];
+            MFMessageComposeViewController *controller = [[[MFMessageComposeViewController alloc] init] autorelease];
+            if([MFMessageComposeViewController canSendText])
+            {
+                controller.body = @"";
+                controller.recipients = [NSArray arrayWithObjects:number, nil];
+                controller.messageComposeDelegate = self;
+                [self presentViewController:controller animated:YES completion:nil];
+                // [self presentModalViewController:controller animated:YES];
+            }
+        }
+    }
+    else if([alertView tag] == 3) {
+		if(buttonIndex == 1) {
+            // Call
+            NSString *number = [[VenueConnect sharedVenueConnect] getConfigKey:@"venueMainCallNumber"];
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",number]]];
+		}
+	}
+    else if ([alertView tag] == 4) {
+        if (buttonIndex == 1){
+            // SMS
+            NSString *number = [[VenueConnect sharedVenueConnect] getConfigKey:@"venueMainTextNumber"];
             MFMessageComposeViewController *controller = [[[MFMessageComposeViewController alloc] init] autorelease];
             if([MFMessageComposeViewController canSendText])
             {
@@ -351,14 +373,14 @@
 }
 
 - (IBAction)onBtnCallClick:(id)sender {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Call %@",[sender titleForState:UIControlStateNormal]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call",nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Call %@",[[VenueConnect sharedVenueConnect] getConfigKey:@"venueBoxCallNumberTitle"]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call",nil];
 	[alert setTag:0];
 	[alert show];
 	[alert release];
 }
 
 - (IBAction)onBtnTextClick:(id)sender {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Text message to %@",[sender titleForState:UIControlStateNormal]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"SMS",nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Text message to %@",[[VenueConnect sharedVenueConnect] getConfigKey:@"venueBoxTextNumberTitle"]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"SMS",nil];
 	[alert setTag:2];
 	[alert show];
 	[alert release];
@@ -391,6 +413,19 @@
 			break;
 	}
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)onBtnMainCallClick:(id)sender {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Call %@",[[VenueConnect sharedVenueConnect] getConfigKey:@"venueMainCallNumberTitle"]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call",nil];
+	[alert setTag:3];
+	[alert show];
+	[alert release];
+}
+
+- (IBAction)onBtnMainTextClick:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Text message to %@",[[VenueConnect sharedVenueConnect] getConfigKey:@"venueMainTextNumberTitle"]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"SMS",nil];
+	[alert setTag:4];
+	[alert show];
+	[alert release];
 }
 
 @end

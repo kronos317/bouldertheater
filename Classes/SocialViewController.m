@@ -14,8 +14,8 @@
 #import "ExternalWebViewController.h"
 #import "Global.h"
 
-#define facebookURL @"http://m.facebook.com/BoulderTheater"
-#define twitterURL @"https://mobile.twitter.com/BoulderTheater"
+#define facebookURL @"http://m.facebook.com/foxtheatreboulder"
+#define twitterURL @"https://mobile.twitter.com/foxtheatreco"
 
 @implementation SocialViewController
 

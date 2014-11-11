@@ -40,7 +40,7 @@
 	[[UIApplication sharedApplication] setStatusBarHidden:YES];
     
 	NSLog(@"Registering for push notifications...");
-
+/*
     if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)]){
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
         [application registerForRemoteNotifications];
@@ -48,8 +48,8 @@
     else{
         [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound];
     }
-    
-    // [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound];
+*/
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound];
     
 	defaults = [NSUserDefaults standardUserDefaults];
 	finishedInitLoad = [NSNumber numberWithInt:0];
@@ -108,7 +108,7 @@
 	
 	splashView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
 	splashView.frame = CGRectMake(0,0,G_WIDTH,G_HEIGHT);
-	[window addSubview:splashView];
+	// [window addSubview:splashView];
 	[splashView release];
 	
 	// Set up black background needed for contrast on splash/signup display
@@ -545,7 +545,7 @@
 
 
 - (void)killSplashView {
-	[splashView removeFromSuperview];
+	// [splashView removeFromSuperview];
 	[signUpView removeFromSuperview];
 }
 

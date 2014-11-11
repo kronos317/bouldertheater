@@ -14,9 +14,6 @@
 #import "UIImage+Resize.h"
 #import "VenueConnect.h"
 
-#define kApplicationKey @"Mf40hcHsTyOzcNmVlfxSVw"
-#define kApplicationSecret @"foYs8e2oTpeAg60ZtUFvoQ"
-
 @implementation CalendarViewController
 
 
@@ -128,11 +125,11 @@
         NSString *szUrl = [defaults objectForKey:@"shows_feed"];
         NSLog(@"%@",szUrl);
         if (szUrl == nil || szUrl.length == 0){
-            szUrl = @"http://www.bouldertheater.com/jsonfeed";
+            szUrl = @"http://foxtheatre.com/json_upcomingshows.aspx";
         }
 		// NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"shows_feed"]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
 
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"shows_feed"]] cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:30];
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:szUrl] cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:30];
 
         // NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:szUrl]];
         
@@ -282,7 +279,7 @@
 			//NSLog(@"%@, %@",newDate,[defaults objectForKey:@"_UALastDeviceToken"]);
 			// Send along our device alias as the JSON encoded request body
 			[request addRequestHeader: @"Content-Type" value: @"application/json"];
-			[request appendPostData:[[NSString stringWithFormat:@"{\"device_tokens\": [\"%@\"] ,\"schedule_for\": [ { \"alias\": \"%@_%@\", \"scheduled_time\": \"%@\" } ],\"aps\": { \"badge\": 0, \"alert\": \"You have an upcoming show at The Boulder Theater in your Favorites Folder!\", \"sound\": \"default\" } }",
+			[request appendPostData:[[NSString stringWithFormat:@"{\"device_tokens\": [\"%@\"] ,\"schedule_for\": [ { \"alias\": \"%@_%@\", \"scheduled_time\": \"%@\" } ],\"aps\": { \"badge\": 0, \"alert\": \"You have an upcoming show at The Fox Theater in your Favorites Folder!\", \"sound\": \"default\" } }",
 									  [defaults objectForKey:@"_UALastDeviceToken"],
 									  [[defaults objectForKey:@"tempFavoritesDict"] objectForKey:@"showId"],
 									  [defaults objectForKey:@"_UALastDeviceToken"],
@@ -336,9 +333,10 @@
 			[request addRequestHeader: @"Content-Type" value: @"application/json"];
 			
 			// Authenticate to the server
-			request.username = kApplicationKey;
-			request.password = kApplicationSecret;
-			[request setDelegate:self];
+			request.username = [[VenueConnect sharedVenueConnect] getConfigKey:@"pushNotificationApplicationKey"];
+            request.password = [[VenueConnect sharedVenueConnect] getConfigKey:@"pushNotificationApplicationSecret"];
+			
+            [request setDelegate:self];
 			[request startAsynchronous];
 			
 			[defaults setObject:favorites forKey:@"favorites"];
@@ -403,7 +401,7 @@
 		button.backgroundColor = [UIColor clearColor];
 		button.tag = indexPath.row;
 		[button addTarget:self action:@selector(accessoryAction:) forControlEvents:UIControlEventTouchUpInside];
-		[button setBackgroundImage:[UIImage imageNamed:@"star.png"] forState:UIControlStateNormal];
+		[button setBackgroundImage:[UIImage imageNamed:@"cellAccessory.png"] forState:UIControlStateNormal];
 		cell.accessoryView = button;
 		
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -569,7 +567,7 @@
 	
 	[self performSelectorInBackground:@selector(downloadImage:) withObject:[d objectForKey:@"showImage"]];
 
-	UIColor *textColor = [UIColor darkGrayColor];
+	UIColor *textColor = [UIColor whiteColor];
 	
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
