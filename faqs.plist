@@ -4,81 +4,49 @@
 <array>
 	<dict>
 		<key>question</key>
-		<string>Q: Could you explain service and processing fees?</string>
+		<string>What does “limited seating” mean?</string>
 		<key>answer</key>
-		<string>It should be noted that in all but the rarest cases, the base ticket price pays the artists&apos; fees. To provide our own in-house ticketing services, we must employ box office staff, maintain a website and the necessary equipment for those services. The reality of providing these services necessitates service charges. We are a small venue and those fees are based on the total amount of tickets we can sell to any given event, and, how many tickets are actually sold to our events.
- 
-Service fees differ depending on where you purchase your tickets. It is most expensive to purchase tickets in advance via our website. It is slightly less expensive to purchase tickets over the phone or in person through our Box Office, and least expensive to purchase tickets in person at the door the night of the show. You will not incur a Service or Processing Fee when you purchase your tickets at the door the night of the show. However, when you wait to buy tickets at the door, you run the risk of the show being sold out. There is never a processing fee at the door, as we do not accept credit cards for tickets purchased at the door.
-Processing fees are included to cover the cost of credit card transactions. The credit card processing company charges us a percentage of the sale price. We have had to build in the Processing Fee for using a credit card to purchase tickets as we use the remainder of the ticket price (ie: the base price of the ticket) to pay the artist, and the service fee to cover our costs in providing ticketing services.
-In reality, we have lower service fees than TicketMaster, Music Today, and many other Corporate ticketing companies as we are an Independent Venue that does everything &quot;in house&quot;. The Service and Processing Fees are put in place simply to help us recoup our costs in providing a convenient way for our customers to buy tickets.</string>
+		<string>For every show there are 217 seats in the balcony. Those are available on a first come first serve basis unless it is a fully reserved show. The only time seats are guaranteed for every ticket holder is when the show is advertised as either a fully reserved or GA seated show. We add seating and tables for as many shows as we can. We do our best to make it as comfortable as we can. If a show is sold out and is general admission “limited seating” we will have no seating in the main room.</string>
 	</dict>
 	<dict>
 		<key>question</key>
-		<string>Q: Where can I buy tickets?</string>
+		<string>What is this “seat” number on my ticket?</string>
 		<key>answer</key>
-		<string>Tickets are available 24 hours a day online at Fox Theatre Ticketing. Tickets are available at our box office, located directly across the street from the Fox in Albums on the Hill. Box office hours are Monday-Saturday, 10am-8:30pm and Sunday noon-6pm. You can order tickets over the phone by calling 303-443-3399. We also sell tickets at Bart&apos;s CD Cellar on Pearl Street and Twist &amp; Shout in Denver. Last but not least, we sell tickets the night of the show at the front door box office.</string>
+		<string>That number is just a ticket accounting number and does not denote a “seat”. If the show is a reserved seated event, the ticket will have a section, row and seat number.</string>
 	</dict>
 	<dict>
 		<key>question</key>
-		<string>Q: I saw on another website that (your favorite band) is playing at the Fox, but the show isn&apos;t listed at all or no tickets are available yet. When will tickets go on sale?</string>
+		<string>Why is there a service charge? And what is the tax?</string>
 		<key>answer</key>
-		<string>Just keep checking back to our site. We will list shows available for purchase as soon as we have all of our details together. The best way to be informed of upcoming show announcements is to join our mailer. Just go to the Fox Theatre home page and under &quot;Join Our Mailer&quot;, type in your email and hit the subscribe button.</string>
+		<string>To cover the costs of ticketing software lease, ticket stock, credit card fees, telephone fees, computer hardware upgrades, box office salaries and other box office operating expenses. The admission tax is a City of Boulder tax (5% of ticket).</string>
 	</dict>
 	<dict>
 		<key>question</key>
-		<string>Q: How do I unsubscribe from your mailing list?</string>
+		<string>What does the &quot;invite friends&quot; button do for me?</string>
 		<key>answer</key>
-		<string>To unsubscribe your email from our mailers, go to our home page. On the right hand side of the page you will see a heading that says &quot;Join Our Mailer&quot;. Enter your name in the textbox and hit the unsubscribe button.</string>
+		<string>The &quot;invite friends&quot; button allows you and your friends to coordinate more easily. By simply clicking the green button you can invite and share the details of an event with your friends to organize and track RSVPs. All of your friends can see who is going, if they have purchased tickets, and more. You can also use it to designate a group buyer if you wish. Best of all it&apos;s free so give it a try and never go to a show alone again.</string>
 	</dict>
 	<dict>
 		<key>question</key>
-		<string>Q: Is smoking allowed inside the Fox Theatre?</string>
+		<string>Where can I park?</string>
 		<key>answer</key>
-		<string>Per Boulder County regulations, smoking is not permitted inside of any bar or restaurant. Smokers will be permitted re-entry, however, upon leaving the venue to smoke.</string>
+		<string>There are several City of Boulder parking garages and lots nearby. There is also three hour parking on surrounding residential streets.</string>
 	</dict>
 	<dict>
 		<key>question</key>
-		<string>Q: What does AA and LAA stand for?</string>
+		<string>What time do the doors open and the show really start?</string>
 		<key>answer</key>
-		<string>AA means &quot;all ages show&quot;. Please note that even if a show is all ages, you must be at least 12 years of age to enter the venue. LAA - Limited All Ages *all shows are 21+ unless otherwise noted!</string>
+		<string>Generally, doors open one hour prior to show time or for movies a half hour before the start of the film. We try to start all shows on time but not having full control over the artists can sometimes cause the show to start later than planned. We do our best to keep things on time as we know people make plans around the starting and ending times of events.</string>
 	</dict>
 	<dict>
 		<key>question</key>
-		<string>Q: What does ADV and DOS stand for?</string>
+		<string>How can I get my band to play the Boulder Theater?</string>
 		<key>answer</key>
-		<string>ADV: Advance ticket price DOS: Day Of Show ticket price.</string>
-	</dict>
-	<dict>
-		<key>question</key>
-		<string>Q: What is the Fox Theatre&apos;s capacity?</string>
-		<key>answer</key>
-		<string>The Fox Theatre&apos;s capacity is 700 people.</string>
-	</dict>
-	<dict>
-		<key>question</key>
-		<string>Q: How can I join your street team?</string>
-		<key>answer</key>
-		<string>We are always looking for new street teamers and office interns! You can email us at office@foxtheatre.com or just drop in during our office hours (Mon-Fri, 10am-6pm).</string>
-	</dict>
-	<dict>
-		<key>question</key>
-		<string>Q: Is there any seating inside the Fox?</string>
-		<key>answer</key>
-		<string>The Fox Theatre is standing room only. We do have bench seating available on the outer walls of the room, these are first come, first serve. If you have a physical condition and you are not able to stand for the duration of the concert, please contact us in advance at 303-447-0095 and we will be happy to accommodate you.
-Q: How can I get my band to play the Fox?
-Mail or drop off a CD and contact information to our Booking Department - 1135 13th Street, Boulder CO 80302.</string>
-	</dict>
-	<dict>
-		<key>question</key>
-		<string>Q: Is The Fox available for private parties and rentals?</string>
-		<key>answer</key>
-		<string>Yes. Please contact Gabby at 303-447-0095 ext 10 for more information.</string>
-	</dict>
-	<dict>
-		<key>question</key>
-		<string>Q: How can I find out about the latest concert additions?</string>
-		<key>answer</key>
-		<string>Our website and iPhone app are updated daily and is the best place to find information.</string>
+		<string>For consideration send a cd and promotional material to:
+  Talent Buyer
+  Boulder Theater
+  2032 14th Street
+  Boulder, CO 80302</string>
 	</dict>
 </array>
 </plist>
